@@ -1,0 +1,23 @@
+@import "@/styles/_variables.scss";
+.hidden-class {
+  display: none;
+}
+.common-input {
+  width: 300px;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  box-shadow: 0 1px 31px $box-shadow;
+  &::placeholder {
+    color: $black-color;
+    opacity: 0.8;
+  }
+}
+.content-container {
+  box-sizing: border-box;
+  width: 80%;
+  margin: 0 0 0 20%;
+}

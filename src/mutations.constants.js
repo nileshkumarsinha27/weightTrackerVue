@@ -1,0 +1,6 @@
+const MUTATIONS = {
+  UPLOAD_DATA: {
+    UPLOAD_SUBMIT_MUTATION: "UPLOAD_SUBMIT_MUTATION"
+  }
+};
+export default MUTATIONS;

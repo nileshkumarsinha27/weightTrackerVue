@@ -1,0 +1,32 @@
+$secondary-color: #6200ee;
+$secondary-color-variant: #3700b3;
+$primary-color: #03dac6;
+$primary-color-variant: #018786;
+$white-color: #ffffff;
+$black-color: #000000;
+$error-color: #b00020;
+$grey-color: #eeeeee;
+$box-shadow: rgba(0, 0, 0, 0.12);
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes toastAnimation {
+  0% {
+    transform: translateX(150%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
