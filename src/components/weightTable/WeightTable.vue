@@ -7,8 +7,6 @@
 <script>
 import CONSTANTS from "@/constants";
 import TableView from "@/components/tableView/TableView";
-import Store from "@/store";
-import ACTIONS from "@/actions.constants";
 export default {
   name: "WeightTable",
   props: {

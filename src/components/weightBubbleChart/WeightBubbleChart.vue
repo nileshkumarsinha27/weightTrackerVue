@@ -1,7 +1,6 @@
 <script>
 import { isDataExists } from "@/utils";
 import CONSTANTS from "@/constants.js";
-import Chart from "chart.js";
 import { Bubble } from "vue-chartjs";
 
 export default {

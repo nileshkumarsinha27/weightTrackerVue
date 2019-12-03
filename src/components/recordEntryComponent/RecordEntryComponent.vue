@@ -36,7 +36,6 @@
   </div>
 </template>
 <script>
-import moment from "moment";
 import uuidv1 from "uuid/v1";
 import CONSTANTS from "@/constants";
 import InputBox from "@/components/inputBox/InputBox";
