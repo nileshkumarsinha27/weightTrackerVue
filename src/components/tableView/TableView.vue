@@ -84,6 +84,7 @@ export default {
         border-radius: 5px;
         &:nth-of-type(2n) {
           background: $primary-color;
+          color: $white-color;
         }
       }
     }
