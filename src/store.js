@@ -9,7 +9,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    weightData: []
+    weightData: [],
+    loggedInUser: {}
   },
   getters: {
     weightDataGetter: state =>
@@ -25,16 +26,23 @@ export default new Vuex.Store({
     chartXAxisValues: state =>
       getValues(state.weightData, CONSTANTS.DATA_KEYS.DATE).map(elem =>
         getTimeFromMoment(elem)
-      )
+      ),
+    getUserDetails: state => state.loggedInUser
   },
   mutations: {
     [MUTATIONS.UPLOAD_DATA.UPLOAD_SUBMIT_MUTATION]: (state, payload) => {
       state.weightData = [...state.weightData, payload];
+    },
+    [MUTATIONS.LOGIN.GET_USER_DETAILS_MUTATION]: (state, payload) => {
+      state.loggedInUser = { ...payload };
     }
   },
   actions: {
     [ACTIONS.UPLOAD_DATA.UPLOAD_SUBMIT]: ({ commit }, payload) => {
       commit(MUTATIONS.UPLOAD_DATA.UPLOAD_SUBMIT_MUTATION, payload);
+    },
+    [ACTIONS.LOGIN.GET_USER_DETAILS]: ({ commit }, payload) => {
+      commit(MUTATIONS.LOGIN.GET_USER_DETAILS_MUTATION, payload);
     }
   }
 });

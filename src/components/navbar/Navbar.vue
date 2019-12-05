@@ -1,24 +1,16 @@
 <template>
   <nav class="nav-bar">
-    <div class="app-logo-container">
-      <img
-        :src="appLogo"
-        alt="logo"
-        class="app-logo"
-        @click="
-          () => {
-            changeRoute(deafultRoute);
-          }
-        "
-      />
-    </div>
     <ul class="nav-list">
       <li
         v-for="(item, index) in navData"
         :key="index"
         @click="
           () => {
-            changeRoute(item.route);
+            if (item.route !== '') {
+              changeRoute(item.route);
+            } else {
+              logoutFunc();
+            }
           }
         "
         :class="getSelectedClassName(item.route)"
@@ -30,14 +22,13 @@
 </template>
 <script>
 import CONSTANTS from "@/constants";
-import appIcn from "@/assets/weightTracker.svg";
 import Router from "@/router.js";
 import cx from "classnames";
+import { logout } from "../../auth/Auth";
 export default {
   name: "Navbar",
   data: () => ({
     navData: CONSTANTS.NAVBAR.DATA,
-    appLogo: appIcn,
     deafultRoute: CONSTANTS.ROUTES.DEFAULT
   }),
   methods: {
@@ -50,6 +41,9 @@ export default {
         return cx(["selected"]);
       }
       return "";
+    },
+    logoutFunc: function() {
+      logout();
     }
   },
   watch: {
@@ -66,7 +60,7 @@ export default {
 .nav-bar {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 50px;
   width: 20%;
   background: $primary-color;
   min-height: 100vh;
@@ -84,18 +78,6 @@ export default {
         background: $primary-color-variant;
         font-weight: bold;
       }
-    }
-  }
-  .app-logo-container {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 20px 0;
-    .app-logo {
-      width: 40px;
-      height: 40px;
-      box-sizing: border-box;
-      display: inline-block;
-      cursor: pointer;
     }
   }
 }

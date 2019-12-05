@@ -9,4 +9,11 @@ const getValues = (arr, key) => {
   });
   return newArr;
 };
-export { isDataExists, checkEmptyStr, getTimeFromMoment, getValues };
+const matchRegex = (regex, str) => regex.test(str);
+export {
+  isDataExists,
+  checkEmptyStr,
+  getTimeFromMoment,
+  getValues,
+  matchRegex
+};

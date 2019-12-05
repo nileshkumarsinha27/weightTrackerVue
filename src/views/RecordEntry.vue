@@ -1,9 +1,5 @@
 <template>
-  <fragment>
-    <div class="content-container">
-      <RecordEntryComponent />
-    </div>
-  </fragment>
+  <RecordEntryComponent />
 </template>
 
 <script>

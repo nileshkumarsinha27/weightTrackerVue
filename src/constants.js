@@ -15,11 +15,11 @@ const CONSTANTS = {
     DATA: [
       {
         name: "Record Entry",
-        route: "/record-entry"
+        route: "/main/record-entry"
       },
       {
         name: "Weight Stats",
-        route: "/weight-stats"
+        route: "/main/weight-stats"
       }
     ]
   },
@@ -32,9 +32,11 @@ const CONSTANTS = {
     BTN_VALUE: "Start Recording"
   },
   ROUTES: {
-    DEFAULT: "/",
-    RECORD_ENTRY: "/record-entry",
-    WEIGHT_STATS: "/weight-stats"
+    DEFAULT: "/main",
+    RECORD_ENTRY: "/main/record-entry",
+    WEIGHT_STATS: "/main/weight-stats",
+    LOGIN: "/",
+    PROFILE: "/main/profile"
   },
   WIDGET_TITLES: {
     LIST: "WEIGHT DATA"
@@ -42,6 +44,33 @@ const CONSTANTS = {
   DATA_KEYS: {
     DATE: "date",
     WEIGHT: "weight"
-  }
+  },
+  LOGIN: {
+    LOGIN_FORM_DATA: [
+      {
+        name: "Email",
+        inputName: "email",
+        type: "text"
+      },
+      {
+        name: "Password",
+        inputName: "password",
+        type: "password"
+      }
+    ]
+  },
+  REGEX_PATTERS: {
+    EMAIL: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+  },
+  PROFILE_DROPDOWN_MENU: [
+    {
+      data: "viewProfile",
+      label: "View Profile"
+    },
+    {
+      data: "logout",
+      label: "Logout"
+    }
+  ]
 };
 export default CONSTANTS;

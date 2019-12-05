@@ -1,6 +1,6 @@
 <template>
   <fragment>
-    <div class="content-container weight-stats-container">
+    <div class="weight-stats-container">
       <WeightStatsComponent />
     </div>
   </fragment>

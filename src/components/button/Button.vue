@@ -1,10 +1,14 @@
 <template>
-  <a :href="href" v-if="checkHref()" :class="getClassName('anchor-tag')">
-    {{
+  <a :href="href" v-if="checkHref()" :class="getClassName('anchor-tag')">{{
     value
-    }}
-  </a>
-  <button :class="`button ${getClassName(buttonType)}`" v-else @click="clickHandle">{{ value }}</button>
+  }}</a>
+  <button
+    :class="`button ${getClassName(buttonType)}`"
+    v-else
+    @click="clickHandle"
+  >
+    {{ value }}
+  </button>
 </template>
 <script>
 import cx from "classnames";
@@ -60,7 +64,6 @@ export default {
   font-size: 14px;
   cursor: pointer;
   outline: none;
-  border: none;
   &.primary {
     background: $primary-color-variant;
     &:hover {

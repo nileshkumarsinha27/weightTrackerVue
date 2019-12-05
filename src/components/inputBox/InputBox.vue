@@ -1,10 +1,10 @@
 <template>
   <fragment>
-    <label :for="name" :class="getLabelClass()">{{ name }}</label>
+    <label :for="inputName" :class="getLabelClass()">{{ name }}</label>
     <input
       :type="typeSent"
       :name="name"
-      :id="name"
+      :id="inputName"
       :placeholder="placeholder"
       v-model="inputVal"
       @input="inputHandle"
@@ -47,13 +47,17 @@ export default {
     isClear: {
       type: Boolean,
       default: false
+    },
+    inputName: {
+      type: String,
+      default: ""
     }
   },
   methods: {
     inputHandle: function(e) {
-      let { inputVal } = this;
+      let { inputVal, inputName } = this;
       inputVal = e.target.value;
-      this.handleChange(inputVal);
+      this.handleChange(inputVal, inputName);
     },
     getLabelClass: function() {
       return cx([this.labelClass]);

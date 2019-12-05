@@ -1,6 +1,9 @@
 const ACTIONS = {
   UPLOAD_DATA: {
     UPLOAD_SUBMIT: "UPLOAD_SUBMIT"
+  },
+  LOGIN: {
+    GET_USER_DETAILS: "GET_USER_DETAILS"
   }
 };
 export default ACTIONS;
