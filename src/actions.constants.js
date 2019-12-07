@@ -4,6 +4,9 @@ const ACTIONS = {
   },
   LOGIN: {
     GET_USER_DETAILS: "GET_USER_DETAILS"
+  },
+  HEADER: {
+    TOGGLE_MENU: "TOGGLE_MENU"
   }
 };
 export default ACTIONS;

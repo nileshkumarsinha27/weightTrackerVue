@@ -10,7 +10,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     weightData: [],
-    loggedInUser: {}
+    loggedInUser: {},
+    showBurger: false
   },
   getters: {
     weightDataGetter: state =>
@@ -27,7 +28,8 @@ export default new Vuex.Store({
       getValues(state.weightData, CONSTANTS.DATA_KEYS.DATE).map(elem =>
         getTimeFromMoment(elem)
       ),
-    getUserDetails: state => state.loggedInUser
+    getUserDetails: state => state.loggedInUser,
+    showBurger: state => state.showBurger
   },
   mutations: {
     [MUTATIONS.UPLOAD_DATA.UPLOAD_SUBMIT_MUTATION]: (state, payload) => {
@@ -35,6 +37,9 @@ export default new Vuex.Store({
     },
     [MUTATIONS.LOGIN.GET_USER_DETAILS_MUTATION]: (state, payload) => {
       state.loggedInUser = { ...payload };
+    },
+    [MUTATIONS.HEADER.TOGGLE_MENU_MUTATION]: state => {
+      state.showBurger = !state.showBurger;
     }
   },
   actions: {
@@ -43,6 +48,9 @@ export default new Vuex.Store({
     },
     [ACTIONS.LOGIN.GET_USER_DETAILS]: ({ commit }, payload) => {
       commit(MUTATIONS.LOGIN.GET_USER_DETAILS_MUTATION, payload);
+    },
+    [ACTIONS.HEADER.TOGGLE_MENU]: ({ commit }) => {
+      commit(MUTATIONS.HEADER.TOGGLE_MENU_MUTATION);
     }
   }
 });

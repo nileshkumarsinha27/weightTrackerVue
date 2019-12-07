@@ -5,6 +5,7 @@ import store from "./store";
 import { Plugin } from "vue-fragment";
 import FIREBASE_CONFIG from "./config/firebase";
 import firebase from "firebase/app";
+import "firebase/firebase-database";
 Vue.use(Plugin);
 
 Vue.config.productionTip = false;
@@ -13,6 +14,7 @@ let app = "";
 
 Vue.config.productionTip = false;
 firebase.initializeApp(FIREBASE_CONFIG);
+firebase.database().ref();
 
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {

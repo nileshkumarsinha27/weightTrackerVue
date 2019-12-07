@@ -30,3 +30,11 @@ $box-shadow: rgba(0, 0, 0, 0.12);
     transform: translateX(150%);
   }
 }
+@keyframes navBarAnimation {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

@@ -7,6 +7,7 @@ import MainView from "./views/MainView";
 import MainViewComponent from "@/components/mainViewComponent/MainViewComponent";
 import RecordEntry from "./views/RecordEntry";
 import WeightStats from "./views/WeightStats";
+import ProfileView from "./views/ProfileView";
 
 Vue.use(Router);
 
@@ -40,7 +41,7 @@ const router = new Router({
         {
           path: "profile",
           name: "profile",
-          component: WeightStats
+          component: ProfileView
         },
         {
           path: "",

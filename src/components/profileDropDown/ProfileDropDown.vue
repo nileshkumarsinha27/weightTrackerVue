@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-dropdown">
+  <div class="profile-dropdown" ref="profileDropdown">
     <div class="profile-information">
       <p v-if="user.displayName">{{ user.displayName }}</p>
       <p v-if="user.email">{{ user.email }}</p>
@@ -13,9 +13,7 @@
             handleProfileClick(item.data);
           }
         "
-      >
-        {{ item.label }}
-      </li>
+      >{{ item.label }}</li>
     </ul>
   </div>
 </template>
@@ -32,6 +30,10 @@ export default {
     user: {
       type: Object,
       required: true
+    },
+    handleOutSideClick: {
+      type: Function,
+      default: () => {}
     }
   },
   methods: {
@@ -47,8 +49,23 @@ export default {
       }
     },
     outsideClick: function(e) {
-      console.log(e.target);
+      if (
+        this.$refs.profileDropdown &&
+        !this.$refs.profileDropdown.contains(e.target)
+      ) {
+        this.handleOutSideClick();
+      }
     }
+  },
+  mounted: function() {
+    document
+      .querySelector("body")
+      .addEventListener("mousedown", this.outsideClick);
+  },
+  beforeDestroy: function() {
+    document
+      .querySelector("body")
+      .removeEventListener("mousedown", this.outsideClick);
   }
 };
 </script>
@@ -58,7 +75,7 @@ export default {
   position: absolute;
   background: $white-color;
   width: 200px;
-  top: 40px;
+  top: 45px;
   box-shadow: 0 1px 30px $box-shadow;
   right: 5px;
   padding: 10px 20px 40px;

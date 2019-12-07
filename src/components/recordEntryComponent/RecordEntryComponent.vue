@@ -1,11 +1,7 @@
 <template>
   <div class="record-entry-container">
     <p class="form-heading">Enter details</p>
-    <form
-      :autocomplete="autoCompleteStatus"
-      @submit="handleSubmit"
-      class="data-form"
-    >
+    <form :autocomplete="autoCompleteStatus" @submit="handleSubmit" class="data-form">
       <InputBox
         :typeSent="inputBoxData.type"
         :name="inputBoxData.name"
@@ -154,8 +150,26 @@ export default {
     height: 300px;
     box-shadow: 0 1px 3px $box-shadow;
     input,
-    date-picker-container {
+    .date-picker-container {
       margin: 20px 0;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .record-entry-container {
+    .data-form {
+      width: 90%;
+    }
+    input,
+    .date-picker-container {
+      width: 90%;
+    }
+    .date-picker-container {
+      .vue-daterange-picker {
+        padding: 10px 0;
+        margin: 0 0 20px;
+        width: 100%;
+      }
     }
   }
 }

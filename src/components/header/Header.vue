@@ -1,12 +1,13 @@
 <template>
   <header class="header">
+    <img :src="hamburger" alt="menu" class="hamburger-menu" @click="showNavBar" />
     <img
       :src="appLogo"
       alt="logo"
       class="app-logo"
       @click="
         () => {
-          changeRoute(deafultRoute);
+          changeRoute(defaultRoute);
         }
       "
     />
@@ -18,14 +19,27 @@
 import CONSTANTS from "@/constants";
 import UserProfileContainer from "@/components/userProfileContainer/UserProfileContainer";
 import appIcn from "@/assets/weightTracker.svg";
+import hamburgerIcn from "@/assets/hamburger.svg";
 import { mapGetters } from "vuex";
+import Router from "@/router.js";
+import Store from "@/store.js";
+import ACTIONS from "@/actions.constants.js";
 export default {
   name: "Header",
   data: () => ({
     title: CONSTANTS.APP_TITLE,
     defaultRoute: CONSTANTS.ROUTES.DEFAULT,
-    appLogo: appIcn
+    appLogo: appIcn,
+    hamburger: hamburgerIcn
   }),
+  methods: {
+    changeRoute: function(route) {
+      Router.push(route);
+    },
+    showNavBar: function() {
+      Store.dispatch(ACTIONS.HEADER.TOGGLE_MENU);
+    }
+  },
   components: { UserProfileContainer },
   computed: {
     ...mapGetters({
@@ -46,10 +60,11 @@ export default {
   height: 50px;
   box-sizing: border-box;
   padding: 20px;
+  position: fixed;
+  top: 0;
   h1 {
     font-size: 22px;
   }
-
   .app-logo {
     width: 40px;
     height: 40px;
@@ -57,6 +72,19 @@ export default {
     display: inline-block;
     cursor: pointer;
     margin: 0 10px 0 0;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .header {
+    .hamburger-menu {
+      display: inline-block;
+    }
+    .app-logo {
+      display: none;
+    }
   }
 }
 </style>
