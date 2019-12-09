@@ -6,6 +6,7 @@ import { Plugin } from "vue-fragment";
 import FIREBASE_CONFIG from "./config/firebase";
 import firebase from "firebase/app";
 import "firebase/firebase-database";
+import "./registerServiceWorker";
 Vue.use(Plugin);
 
 Vue.config.productionTip = false;
