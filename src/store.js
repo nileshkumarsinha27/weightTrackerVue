@@ -44,6 +44,10 @@ export default new Vuex.Store({
     },
     [MUTATIONS.HEADER.TOGGLE_MENU_MUTATION]: state => {
       state.showBurger = !state.showBurger;
+    },
+    [MUTATIONS.LOGIN.CLEAR_STORE_DATA_MUTATION]: state => {
+      state.loggedInUser = Object.assign({});
+      state.weightData = [];
     }
   },
   actions: {
@@ -55,6 +59,9 @@ export default new Vuex.Store({
     },
     [ACTIONS.HEADER.TOGGLE_MENU]: ({ commit }) => {
       commit(MUTATIONS.HEADER.TOGGLE_MENU_MUTATION);
+    },
+    [ACTIONS.LOGIN.CLEAR_STORE_DATA]: ({ commit }) => {
+      commit(MUTATIONS.LOGIN.CLEAR_STORE_DATA_MUTATION);
     }
   }
 });

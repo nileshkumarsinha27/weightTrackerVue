@@ -21,6 +21,8 @@
 import CONSTANTS from "@/constants";
 import Router from "@/router.js";
 import { logout } from "@/auth/Auth";
+import Store from "@/store.js";
+import ACTIONS from "@/actions.constants";
 export default {
   name: "ProfileDropDown",
   data: () => ({
@@ -43,7 +45,9 @@ export default {
           Router.push(CONSTANTS.ROUTES.PROFILE);
           break;
         case "logout":
+          Store.dispatch(ACTIONS.LOGIN.CLEAR_STORE_DATA);
           logout();
+
           break;
           deafult: break;
       }
