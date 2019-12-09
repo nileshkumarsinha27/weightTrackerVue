@@ -10,8 +10,7 @@ const login = (email, password) =>
     .auth()
     .signInWithEmailAndPassword(email, password)
     .then(res => {
-      const { uid, displayName, email, photoURL } = res.user;
-      writeUserData(uid, displayName, email, photoURL);
+      userData(res.user);
       redirectToApp();
     })
     .catch(e => console.log(e.message));
@@ -43,6 +42,33 @@ const writeUserData = (userId, name, email, imageUrl) => {
     });
 };
 
+const userData = (user, cb = () => {}) =>
+  firebase
+    .database()
+    .ref("users")
+    .on("value", data => {
+      const { uid, displayName, email, photoURL } = user;
+      if (findData(data.val(), uid)) {
+        writeUserData(uid, displayName, email, photoURL);
+      }
+      cb(data.val()[uid]);
+    });
+
+const findData = (data, uid) => {
+  return Object.keys(data).findIndex(elem => elem === uid) === -1
+    ? true
+    : false;
+};
+
+const updateUserData = (userId, data, cb = () => {}) => {
+  firebase
+    .database()
+    .ref("users/" + userId)
+    .update(data)
+    .then(cb)
+    .catch(e => console.log(e));
+};
+
 export {
   redirectToApp,
   redirectToLogin,
@@ -50,5 +76,7 @@ export {
   logout,
   signUp,
   getUser,
-  writeUserData
+  writeUserData,
+  updateUserData,
+  userData
 };

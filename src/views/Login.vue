@@ -7,11 +7,7 @@
     />
     <h1>{{ appTitle }}</h1>
     <h3>{{ getButtonValue() }}</h3>
-    <form
-      class="login-container-form"
-      @submit="handleSubmit"
-      :autocomplete="autoCompleteStatus"
-    >
+    <form class="login-container-form" @submit="handleSubmit" :autocomplete="autoCompleteStatus">
       <InputBox
         v-for="(item, index) in formData"
         :key="index"
@@ -171,6 +167,18 @@ export default {
         position: relative;
         top: -8px;
       }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .login-container {
+    .main-logo {
+      height: 75px;
+      width: 75px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
     }
   }
 }

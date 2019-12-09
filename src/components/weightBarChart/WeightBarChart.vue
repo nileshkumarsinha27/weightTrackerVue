@@ -1,12 +1,11 @@
 <script>
 import { isDataExists } from "@/utils";
 import CONSTANTS from "@/constants.js";
-import { Bar, mixins } from "vue-chartjs";
+import { Bar } from "vue-chartjs";
 
 export default {
   name: "WeightBarChart",
   extends: Bar,
-  mixins: [mixins.reactiveProp],
   props: {
     data: {
       type: Array,

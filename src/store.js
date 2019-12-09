@@ -11,7 +11,8 @@ export default new Vuex.Store({
   state: {
     weightData: [],
     loggedInUser: {},
-    showBurger: false
+    showBurger: false,
+    isDataLoaded: false
   },
   getters: {
     weightDataGetter: state =>
@@ -29,14 +30,17 @@ export default new Vuex.Store({
         getTimeFromMoment(elem)
       ),
     getUserDetails: state => state.loggedInUser,
-    showBurger: state => state.showBurger
+    showBurger: state => state.showBurger,
+    showLoader: state => state.isDataLoaded
   },
   mutations: {
     [MUTATIONS.UPLOAD_DATA.UPLOAD_SUBMIT_MUTATION]: (state, payload) => {
-      state.weightData = [...state.weightData, payload];
+      state.weightData = [...payload];
     },
     [MUTATIONS.LOGIN.GET_USER_DETAILS_MUTATION]: (state, payload) => {
       state.loggedInUser = { ...payload };
+      state.weightData = [...payload.weightData];
+      state.isDataLoaded = true;
     },
     [MUTATIONS.HEADER.TOGGLE_MENU_MUTATION]: state => {
       state.showBurger = !state.showBurger;

@@ -41,6 +41,7 @@ import Toast from "@/components/toast/Toast";
 import { checkEmptyStr } from "@/utils";
 import Store from "@/store.js";
 import ACTIONS from "@/actions.constants.js";
+import { updateUserData, getUser } from "@/auth/Auth";
 export default {
   name: "MainContent",
   data: () => ({
@@ -99,14 +100,25 @@ export default {
       }
     },
     formSubmithandle: function() {
+      const { uid } = getUser();
       this.isClear = true;
       this.isClearPicker = true;
-      this.handleOpenCloseToast(true, CONSTANTS.TAOST_SUCCESS);
-      Store.dispatch(ACTIONS.UPLOAD_DATA.UPLOAD_SUBMIT, {
-        weight: this.dataObject.weight,
-        date: this.dataObject.date,
-        id: uuidv1()
-      });
+      updateUserData(
+        uid,
+        {
+          weightData: [
+            ...this.weightData,
+            {
+              weight: this.dataObject.weight,
+              date: this.dataObject.date,
+              id: uuidv1()
+            }
+          ]
+        },
+        () => {
+          this.handleOpenCloseToast(true, CONSTANTS.TAOST_SUCCESS);
+        }
+      );
     },
     handleOpenCloseToast: function(toastStatus, text = "") {
       this.showToast = toastStatus;
@@ -116,6 +128,16 @@ export default {
       this.isClear = false;
       this.isClearPicker = false;
       this.disableStatus = true;
+    }
+  },
+  props: {
+    user: {
+      type: Object,
+      required: true
+    },
+    weightData: {
+      type: Array,
+      default: []
     }
   }
 };

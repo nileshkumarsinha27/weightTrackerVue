@@ -50,8 +50,9 @@ export default {
       const { displayName, email } = this.user;
       if (displayName) {
         return displayName[0];
+      } else if (email) {
+        return email[0];
       }
-      return email[0];
     },
     getImageSrc: function() {
       const { photoURL } = this;

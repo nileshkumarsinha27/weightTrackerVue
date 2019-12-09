@@ -13,7 +13,7 @@
 import Header from "@/components/header/Header";
 import NavBar from "@/components/navbar/Navbar";
 import NavBarMobile from "@/components/navBarMobile/NavBarMobile";
-import { getUser } from "@/auth/Auth";
+import { getUser, userData } from "@/auth/Auth";
 import ACTIONS from "@/actions.constants";
 import Store from "@/store";
 import { mapGetters } from "vuex";
@@ -21,7 +21,7 @@ export default {
   name: "MainView",
   components: { Header, NavBar, NavBarMobile },
   beforeMount: function() {
-    Store.dispatch(ACTIONS.LOGIN.GET_USER_DETAILS, this.getPayload());
+    userData(this.getPayload(), this.updateStore);
   },
   methods: {
     getPayload: function() {
@@ -33,6 +33,9 @@ export default {
         emailVerified: user.emailVerified,
         uid: user.uid
       };
+    },
+    updateStore: function(data) {
+      Store.dispatch(ACTIONS.LOGIN.GET_USER_DETAILS, data);
     }
   },
   computed: {

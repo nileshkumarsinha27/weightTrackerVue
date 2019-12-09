@@ -45,7 +45,7 @@ export default {
 }
 @media screen and (max-width: 767px) {
   .weight-list-widget {
-    width: 50%;
+    width: 90%;
     flex-wrap: wrap;
   }
 }
