@@ -1,6 +1,6 @@
 {
-  "name": "my-playlist",
-  "short_name": "mylist",
+  "name": "weight-tacker",
+  "short_name": "weightTracker",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
