@@ -18,6 +18,7 @@
         :inputClass="inputClass"
         :labelClass="labelClass"
         :handleChange="handleChange"
+        :isClear="isClear"
       />
       <Button
         :value="getButtonValue()"
@@ -39,6 +40,13 @@
     <div v-if="showSignUpForm">
       <span class="back-btn-span" @click="()=>{handleButtonClickSignUp(false)}">{{backToLogin}}</span>
     </div>
+    <Toast
+      v-if="toast.showToast"
+      :toastMessage="toast.message"
+      :toastType="toast.type"
+      :closeToast="()=>{showHideToast(false,'','')}"
+      :customClass="loginToastClass"
+    />
   </div>
 </template>
 
@@ -46,6 +54,7 @@
 import InputBox from "../components/inputBox/InputBox";
 import Button from "../components/button/Button";
 import ImageComponent from "../components/imageComponent/ImageComponent";
+import Toast from "../components/toast/Toast";
 import CONSTANTS from "../constants";
 import appIcon from "../assets/weightTracker.svg";
 import { checkEmptyStr, matchRegex } from "../utils";
@@ -72,9 +81,16 @@ export default {
     autoCompleteStatus: "off",
     showSignUpForm: false,
     signUpBtnType: "secondary",
-    backToLogin: "Back to sign in"
+    backToLogin: "Back to sign in",
+    toast: {
+      message: "",
+      type: "",
+      showToast: false
+    },
+    loginToastClass: "login-toast",
+    isClear: false
   }),
-  components: { InputBox, Button, ImageComponent },
+  components: { InputBox, Button, ImageComponent, Toast },
   methods: {
     handleSubmit: function(e) {
       e.preventDefault();
@@ -87,12 +103,13 @@ export default {
     },
     handleButtonClick: function() {
       const { email, password } = this.formDataSent;
-      const { showSignUpForm } = this;
+      const { showSignUpForm, showHideToast } = this;
       if (showSignUpForm) {
-        signUp(email, password);
+        signUp(email, password, showHideToast);
         this.showSignUpForm = false;
+        this.isClear = true;
       } else {
-        login(email, password);
+        login(email, password, showHideToast);
       }
     },
     getButtonValue: function() {
@@ -109,6 +126,14 @@ export default {
         matchRegex(CONSTANTS.REGEX_PATTERS.EMAIL, this.formDataSent.email)
         ? false
         : true;
+    },
+    showHideToast: function(status, message, type) {
+      this.toast = {
+        ...this.toast,
+        message,
+        type,
+        showToast: status
+      };
     }
   }
 };
@@ -179,12 +204,20 @@ export default {
     color: $secondary-color;
     cursor: pointer;
   }
+  .login-toast {
+    width: 300px;
+    padding: 10px;
+    span {
+      padding: 0 10px;
+    }
+  }
 }
 @media screen and (max-width: 767px) {
   .login-container {
     .main-logo {
       height: 75px;
       width: 75px;
+      text-align: justify;
     }
     h1 {
       text-align: center;

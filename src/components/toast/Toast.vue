@@ -1,9 +1,10 @@
 <template>
-  <div class="toast-container" @animationend="closeToast">
+  <div :class="getToastClass()" @animationend="closeToast">
     <span>{{ toastMessage }}</span>
   </div>
 </template>
 <script>
+import cx from "classnames";
 export default {
   name: "Toast",
   props: {
@@ -14,6 +15,19 @@ export default {
     closeToast: {
       type: Function,
       default: () => {}
+    },
+    toastType: {
+      type: String,
+      default: ""
+    },
+    customClass: {
+      type: String,
+      default: ""
+    }
+  },
+  methods: {
+    getToastClass: function() {
+      return cx(["toast-container", this.toastType, this.customClass]);
     }
   }
 };
@@ -33,6 +47,9 @@ export default {
   border-radius: 5px;
   align-items: center;
   font-weight: bold;
-  animation: toastAnimation 2s ease;
+  animation: toastAnimation 4s ease;
+  &.error {
+    background: $error-color;
+  }
 }
 </style>

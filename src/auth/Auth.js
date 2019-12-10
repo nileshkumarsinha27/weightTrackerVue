@@ -5,7 +5,7 @@ import CONSTANTS from "../constants.js";
 
 const redirectToApp = () => Router.push(CONSTANTS.ROUTES.DEFAULT);
 const redirectToLogin = () => Router.push(CONSTANTS.ROUTES.LOGIN);
-const login = (email, password) =>
+const login = (email, password, cb = () => {}) =>
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
@@ -13,7 +13,9 @@ const login = (email, password) =>
       userData(res.user);
       redirectToApp();
     })
-    .catch(e => console.log(e.message));
+    .catch(e => {
+      cb(true, e.message, CONSTANTS.LOGIN.TOAST_TYPES.ERROR);
+    });
 
 const logout = () => {
   firebase
@@ -22,12 +24,21 @@ const logout = () => {
     .then(() => redirectToLogin());
 };
 
-const signUp = (email, password) =>
+const signUp = (email, password, cb = () => {}) =>
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
-    .then(redirectToLogin)
-    .catch(e => console.log(e.message));
+    .then(() => {
+      cb(
+        true,
+        CONSTANTS.LOGIN.SIGNUP_SUCCESS,
+        CONSTANTS.LOGIN.TOAST_TYPES.SUCCESS
+      );
+      logout();
+    })
+    .catch(e => {
+      cb(true, e.message, CONSTANTS.LOGIN.TOAST_TYPES.ERROR);
+    });
 
 const getUser = () => firebase.auth().currentUser;
 

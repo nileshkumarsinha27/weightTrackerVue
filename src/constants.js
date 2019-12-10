@@ -57,7 +57,12 @@ const CONSTANTS = {
         inputName: "password",
         type: "password"
       }
-    ]
+    ],
+    TOAST_TYPES: {
+      SUCCESS: "success",
+      ERROR: "error"
+    },
+    SIGNUP_SUCCESS: "You have signed up successfully"
   },
   REGEX_PATTERS: {
     EMAIL: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
