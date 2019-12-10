@@ -2,7 +2,7 @@
   <fragment>
     <Header />
     <NavBar />
-    <NavBarMobile v-if="showBurger" />
+    <NavBarMobile v-if="showBurger" :handleOutSideClick="showNavBar" />
     <div class="content-container">
       <router-view />
     </div>
@@ -36,6 +36,9 @@ export default {
     },
     updateStore: function(data) {
       Store.dispatch(ACTIONS.LOGIN.GET_USER_DETAILS, data);
+    },
+    showNavBar: function() {
+      Store.dispatch(ACTIONS.HEADER.TOGGLE_MENU);
     }
   },
   computed: {

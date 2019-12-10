@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-bar">
+  <nav class="nav-bar" ref="navbarMenuMobile">
     <ul class="nav-list">
       <li
         v-for="(item, index) in navData"
@@ -45,6 +45,30 @@ export default {
     },
     logoutFunc: function() {
       logout();
+    },
+    outsideClick: function(e) {
+      if (
+        this.$refs.navbarMenuMobile &&
+        !this.$refs.navbarMenuMobile.contains(e.target)
+      ) {
+        this.handleOutSideClick();
+      }
+    }
+  },
+  mounted: function() {
+    document
+      .querySelector("body")
+      .addEventListener("mousedown", this.outsideClick);
+  },
+  beforeDestroy: function() {
+    document
+      .querySelector("body")
+      .removeEventListener("mousedown", this.outsideClick);
+  },
+  props: {
+    handleOutSideClick: {
+      type: Function,
+      deafult: () => {}
     }
   }
 };

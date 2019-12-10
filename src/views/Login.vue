@@ -32,9 +32,12 @@
       </div>
       <Button
         :value="buttonValueSignUp"
-        :handleClick="handleButtonClickSignUp"
+        :handleClick="()=>{handleButtonClickSignUp(true)}"
         :buttonType="signUpBtnType"
       />
+    </div>
+    <div v-if="showSignUpForm">
+      <span class="back-btn-span" @click="()=>{handleButtonClickSignUp(false)}">{{backToLogin}}</span>
     </div>
   </div>
 </template>
@@ -68,7 +71,8 @@ export default {
     inputClass: "common-input",
     autoCompleteStatus: "off",
     showSignUpForm: false,
-    signUpBtnType: "secondary"
+    signUpBtnType: "secondary",
+    backToLogin: "Back to sign in"
   }),
   components: { InputBox, Button, ImageComponent },
   methods: {
@@ -96,8 +100,8 @@ export default {
         ? this.buttonValueSignUp
         : this.buttonValueSignIn;
     },
-    handleButtonClickSignUp: function() {
-      this.showSignUpForm = true;
+    handleButtonClickSignUp: function(signupStatus) {
+      this.showSignUpForm = signupStatus;
     },
     getDisabledStatus: function() {
       return checkEmptyStr(this.formDataSent.email) &&
@@ -168,6 +172,12 @@ export default {
         top: -8px;
       }
     }
+  }
+  .back-btn-span {
+    margin: 10px 0;
+    text-decoration: underline;
+    color: $secondary-color;
+    cursor: pointer;
   }
 }
 @media screen and (max-width: 767px) {
