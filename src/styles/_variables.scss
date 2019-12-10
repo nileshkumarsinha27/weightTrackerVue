@@ -7,7 +7,7 @@ $black-color: #000000;
 $error-color: #b00020;
 $grey-color: #eeeeee;
 $box-shadow: rgba(0, 0, 0, 0.12);
-
+$black-color-opacity: rgba(0, 0, 0, 0.5);
 @keyframes opacityAnimation {
   0% {
     opacity: 0;

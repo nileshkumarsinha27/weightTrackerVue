@@ -9,6 +9,7 @@
       v-model="inputVal"
       @input="inputHandle"
       :class="getInputClass()"
+      :disabled="disabled"
     />
   </fragment>
 </template>
@@ -51,6 +52,14 @@ export default {
     inputName: {
       type: String,
       default: ""
+    },
+    defaultValue: {
+      type: String,
+      default: ""
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -71,6 +80,16 @@ export default {
       if (next !== prev && next) {
         this.inputVal = "";
       }
+    },
+    defaultValue: function(next, prev) {
+      if (next !== prev) {
+        this.inputVal = next;
+      }
+    }
+  },
+  mounted: function() {
+    if (this.defaultValue) {
+      this.inputVal = this.defaultValue;
     }
   }
 };

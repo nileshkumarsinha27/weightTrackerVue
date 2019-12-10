@@ -76,6 +76,27 @@ const CONSTANTS = {
       data: "logout",
       label: "Logout"
     }
-  ]
+  ],
+  PROFILE: {
+    FIELDS: [
+      {
+        name: "Name",
+        inputName: "displayName",
+        type: "text"
+      },
+      {
+        name: "Email",
+        inputName: "email",
+        type: "text"
+      },
+      {
+        name: "Location",
+        inputName: "location",
+        type: "text"
+      }
+    ],
+    DISABLED_FIELDS: ["email"],
+    TOAST_MESSAGE_PROFILE: "Data Updated successfully"
+  }
 };
 export default CONSTANTS;

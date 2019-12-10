@@ -49,7 +49,8 @@ export default {
     outsideClick: function(e) {
       if (
         this.$refs.navbarMenuMobile &&
-        !this.$refs.navbarMenuMobile.contains(e.target)
+        !this.$refs.navbarMenuMobile.contains(e.target) &&
+        !e.target.classList.contains("hamburger-menu")
       ) {
         this.handleOutSideClick();
       }
