@@ -129,6 +129,7 @@ export default {
   justify-content: flex-start;
   text-align: center;
   padding: 0 0 50px 0;
+  flex-wrap: wrap;
   h1 {
     font-size: 24px;
     font-weight: bold;
@@ -172,6 +173,14 @@ export default {
       box-sizing: border-box;
       margin: 20px 0 0;
       width: 75%;
+      margin: 0 auto;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .profile-update-container {
+    .left-container {
+      width: 90%;
       margin: 0 auto;
     }
   }
