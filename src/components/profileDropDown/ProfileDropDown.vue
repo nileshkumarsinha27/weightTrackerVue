@@ -69,11 +69,17 @@ export default {
     document
       .querySelector("body")
       .addEventListener("mousedown", this.outsideClick);
+    document
+      .querySelector("body")
+      .addEventListener("touchend", this.outsideClick);
   },
   beforeDestroy: function() {
     document
       .querySelector("body")
       .removeEventListener("mousedown", this.outsideClick);
+    document
+      .querySelector("body")
+      .removeEventListener("touchend", this.outsideClick);
   }
 };
 </script>

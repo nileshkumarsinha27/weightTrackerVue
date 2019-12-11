@@ -16,6 +16,7 @@
       :closeToast="()=>{showHideToast(false,'','')}"
       :customClass="loginToastClass"
     />
+    <span class="back-btn-span" @click="backToLoginScreen">{{backToLogin}}</span>
   </div>
 </template>
 <script>
@@ -24,7 +25,7 @@ import Toast from "../components/toast/Toast";
 import ImageComponent from "@/components/imageComponent/ImageComponent";
 import CONSTANTS from "@/constants";
 import AppLogo from "@/assets/weightTracker.svg";
-import { sendVerificationLink } from "@/auth/Auth";
+import { sendVerificationLink, logout } from "@/auth/Auth";
 export default {
   name: "EmailVerify",
   components: { Button, ImageComponent, Toast },
@@ -42,7 +43,8 @@ export default {
       type: "",
       showToast: false
     },
-    loginToastClass: "email-verify-toast"
+    loginToastClass: "email-verify-toast",
+    backToLogin: "Back to sign in"
   }),
   methods: {
     handleBtnClick: function() {
@@ -56,11 +58,15 @@ export default {
         type,
         showToast: status
       };
+    },
+    backToLoginScreen: function() {
+      logout();
     }
   }
 };
 </script>
 <style lang="scss" scoped>
+@import "@/styles/_variables.scss";
 .email-verify-container {
   display: flex;
   justify-content: center;
@@ -93,6 +99,15 @@ export default {
     padding: 10px;
     span {
       padding: 0 10px;
+    }
+  }
+  .back-btn-span {
+    margin: 10px 0;
+    text-decoration: underline;
+    color: $secondary-color;
+    cursor: pointer;
+    &.sign-up-link {
+      font-weight: bold;
     }
   }
 }
