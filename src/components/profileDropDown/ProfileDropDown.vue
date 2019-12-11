@@ -43,6 +43,10 @@ export default {
       switch (key) {
         case "viewProfile":
           Router.push(CONSTANTS.ROUTES.PROFILE);
+          Store.dispatch(
+            ACTIONS.NAVBAR.SET_NAV_ROUTE,
+            CONSTANTS.ROUTES.PROFILE
+          );
           break;
         case "logout":
           Store.dispatch(ACTIONS.LOGIN.CLEAR_STORE_DATA);
