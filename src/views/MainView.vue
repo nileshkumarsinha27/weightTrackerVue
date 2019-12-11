@@ -1,8 +1,12 @@
 <template>
   <fragment>
     <Header />
-    <NavBar />
-    <NavBarMobile v-if="showBurger" :handleOutSideClick="showNavBar" />
+    <NavBar :selectedRoute="selectedRoute" />
+    <NavBarMobile
+      v-if="showBurger"
+      :handleOutSideClick="showNavBar"
+      :selectedRoute="selectedRoute"
+    />
     <div class="content-container">
       <router-view />
     </div>
@@ -22,6 +26,7 @@ export default {
   components: { Header, NavBar, NavBarMobile },
   beforeMount: function() {
     userData(this.getPayload(), this.updateStore);
+    Store.dispatch(ACTIONS.NAVBAR.SET_NAV_ROUTE, window.location.pathname);
   },
   methods: {
     getPayload: function() {
@@ -43,7 +48,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      showBurger: "showBurger"
+      showBurger: "showBurger",
+      selectedRoute: "selectedRoute"
     })
   }
 };

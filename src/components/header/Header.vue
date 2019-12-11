@@ -35,6 +35,7 @@ export default {
   methods: {
     changeRoute: function(route) {
       Router.push(route);
+      Store.dispatch(ACTIONS.NAVBAR.SET_NAV_ROUTE, route);
     },
     showNavBar: function() {
       Store.dispatch(ACTIONS.HEADER.TOGGLE_MENU);

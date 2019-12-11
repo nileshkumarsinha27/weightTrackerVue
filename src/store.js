@@ -12,7 +12,8 @@ export default new Vuex.Store({
     weightData: [],
     loggedInUser: {},
     showBurger: false,
-    isDataLoaded: false
+    isDataLoaded: false,
+    navRoute: CONSTANTS.ROUTES.DEFAULT
   },
   getters: {
     weightDataGetter: state =>
@@ -31,7 +32,8 @@ export default new Vuex.Store({
       ),
     getUserDetails: state => state.loggedInUser,
     showBurger: state => state.showBurger,
-    showLoader: state => state.isDataLoaded
+    showLoader: state => state.isDataLoaded,
+    selectedRoute: state => state.navRoute
   },
   mutations: {
     [MUTATIONS.UPLOAD_DATA.UPLOAD_SUBMIT_MUTATION]: (state, payload) => {
@@ -48,6 +50,9 @@ export default new Vuex.Store({
     [MUTATIONS.LOGIN.CLEAR_STORE_DATA_MUTATION]: state => {
       state.loggedInUser = Object.assign({});
       state.weightData = [];
+    },
+    [MUTATIONS.NAVBAR.SET_NAV_ROUTE_MUTATION]: (state, payload) => {
+      state.navRoute = payload;
     }
   },
   actions: {
@@ -62,6 +67,9 @@ export default new Vuex.Store({
     },
     [ACTIONS.LOGIN.CLEAR_STORE_DATA]: ({ commit }) => {
       commit(MUTATIONS.LOGIN.CLEAR_STORE_DATA_MUTATION);
+    },
+    [ACTIONS.NAVBAR.SET_NAV_ROUTE]: ({ commit }, payload) => {
+      commit(MUTATIONS.NAVBAR.SET_NAV_ROUTE_MUTATION, payload);
     }
   }
 });

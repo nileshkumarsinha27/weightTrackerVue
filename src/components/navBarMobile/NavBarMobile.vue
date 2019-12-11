@@ -35,10 +35,11 @@ export default {
     changeRoute: function(route) {
       Router.push(route);
       Store.dispatch(ACTIONS.HEADER.TOGGLE_MENU);
+      Store.dispatch(ACTIONS.NAVBAR.SET_NAV_ROUTE, route);
     },
     getSelectedClassName: function(route) {
-      const { path } = Router.history.current;
-      if (path === route && path !== CONSTANTS.ROUTES.DEFAULT) {
+      const { selectedRoute } = this;
+      if (selectedRoute === route) {
         return cx(["selected"]);
       }
       return "";
@@ -70,6 +71,10 @@ export default {
     handleOutSideClick: {
       type: Function,
       deafult: () => {}
+    },
+    selectedRoute: {
+      type: String,
+      required: true
     }
   }
 };
@@ -98,7 +103,8 @@ export default {
       cursor: pointer;
       box-sizing: border-box;
       font-size: 12px;
-      &:hover {
+      &:hover,
+      &.selected {
         background: $primary-color-variant;
         font-weight: bold;
       }

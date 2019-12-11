@@ -23,6 +23,8 @@ import CONSTANTS from "@/constants";
 import Router from "@/router.js";
 import cx from "classnames";
 import { logout } from "../../auth/Auth";
+import Store from "@/store";
+import ACTIONS from "@/actions.constants.js";
 export default {
   name: "Navbar",
   data: () => ({
@@ -32,10 +34,11 @@ export default {
   methods: {
     changeRoute: function(route) {
       Router.push(route);
+      Store.dispatch(ACTIONS.NAVBAR.SET_NAV_ROUTE, route);
     },
     getSelectedClassName: function(route) {
-      const { path } = Router.history.current;
-      if (path === route && path !== CONSTANTS.ROUTES.DEFAULT) {
+      const { selectedRoute } = this;
+      if (selectedRoute === route) {
         return cx(["selected"]);
       }
       return "";
@@ -44,11 +47,10 @@ export default {
       logout();
     }
   },
-  watch: {
-    $route: function(to, from) {
-      if (to.path !== from.path) {
-        this.getSelectedClassName(to.path);
-      }
+  props: {
+    selectedRoute: {
+      type: String,
+      required: true
     }
   }
 };
@@ -72,7 +74,8 @@ export default {
       color: $white-color;
       cursor: pointer;
       box-sizing: border-box;
-      &:hover {
+      &:hover,
+      &.selected {
         background: $primary-color-variant;
         font-weight: bold;
       }

@@ -179,6 +179,7 @@ export default {
 }
 @media screen and (max-width: 767px) {
   .record-entry-container {
+    margin: -50px auto 0;
     .data-form {
       width: 90%;
     }

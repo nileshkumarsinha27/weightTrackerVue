@@ -8,6 +8,9 @@ const ACTIONS = {
   },
   HEADER: {
     TOGGLE_MENU: "TOGGLE_MENU"
+  },
+  NAVBAR: {
+    SET_NAV_ROUTE: "SET_NAV_ROUTE"
   }
 };
 export default ACTIONS;
