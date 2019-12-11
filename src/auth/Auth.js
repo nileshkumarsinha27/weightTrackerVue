@@ -79,7 +79,20 @@ const updateUserData = (userId, data, cb = () => {}) => {
     .then(cb)
     .catch(e => console.log(e));
 };
-
+const sendVerificationLink = (cb = () => {}) =>
+  getUser()
+    .sendEmailVerification()
+    .then(() => {
+      cb(
+        true,
+        CONSTANTS.LOGIN.VERIFICATION_MAIL_SENT,
+        CONSTANTS.LOGIN.TOAST_TYPES.SUCCESS
+      );
+      setTimeout(logout, 4000);
+    })
+    .catch(e => {
+      cb(true, e.message, CONSTANTS.LOGIN.TOAST_TYPES.ERROR);
+    });
 export {
   redirectToApp,
   redirectToLogin,
@@ -89,5 +102,6 @@ export {
   getUser,
   writeUserData,
   updateUserData,
-  userData
+  userData,
+  sendVerificationLink
 };

@@ -95,6 +95,8 @@ export default {
   justify-content: center;
   flex-direction: column;
   .profile-information {
+    width: 100%;
+    font-size: 12px;
     p {
       color: $primary-color;
       font-weight: 600;

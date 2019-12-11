@@ -62,7 +62,8 @@ const CONSTANTS = {
       SUCCESS: "success",
       ERROR: "error"
     },
-    SIGNUP_SUCCESS: "You have signed up successfully"
+    SIGNUP_SUCCESS: "You have signed up successfully",
+    VERIFICATION_MAIL_SENT: "Email has been sent successfully"
   },
   REGEX_PATTERS: {
     EMAIL: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
@@ -97,6 +98,10 @@ const CONSTANTS = {
     ],
     DISABLED_FIELDS: ["email"],
     TOAST_MESSAGE_PROFILE: "Data Updated successfully"
+  },
+  EMAIL_VERIFY: {
+    DESCRIPTION: "Please verify your email to continue",
+    BTN_VALUE: "Send Link"
   }
 };
 export default CONSTANTS;

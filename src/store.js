@@ -41,7 +41,7 @@ export default new Vuex.Store({
     },
     [MUTATIONS.LOGIN.GET_USER_DETAILS_MUTATION]: (state, payload) => {
       state.loggedInUser = { ...payload };
-      state.weightData = [...payload.weightData];
+      state.weightData = payload.weightData ? [...payload.weightData] : [];
       state.isDataLoaded = true;
     },
     [MUTATIONS.HEADER.TOGGLE_MENU_MUTATION]: state => {

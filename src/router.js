@@ -8,6 +8,7 @@ import MainViewComponent from "@/components/mainViewComponent/MainViewComponent"
 import RecordEntry from "./views/RecordEntry";
 import WeightStats from "./views/WeightStats";
 import ProfileView from "./views/ProfileView";
+import EmailVerify from "./views/EmailVerify";
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ const router = new Router({
       path: "/",
       name: "login",
       component: Login
+    },
+    {
+      path: "/email-verify",
+      name: "emailVerify",
+      component: EmailVerify
     },
     {
       path: "/main",
@@ -56,7 +62,10 @@ router.beforeEach((to, from, next) => {
   let currentUser = firebase.auth().currentUser;
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
   if (requiresAuth && !currentUser) next("/");
-  else if (!requiresAuth && currentUser) next("/main");
+  else if (requiresAuth && currentUser && !currentUser.emailVerified)
+    next("/email-verify");
+  else if (!requiresAuth && currentUser && currentUser.emailVerified)
+    next("/main");
   else next();
 });
 

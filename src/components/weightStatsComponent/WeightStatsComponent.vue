@@ -27,7 +27,7 @@ export default {
   name: "WeightStatsComponent",
   methods: {
     checkDataLoaded: function() {
-      return isDataExists(this.data);
+      return this.data && isDataExists(this.data);
     }
   },
   computed: {

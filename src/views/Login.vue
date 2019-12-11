@@ -31,11 +31,10 @@
       <div class="border-line">
         <span>OR</span>
       </div>
-      <Button
-        :value="buttonValueSignUp"
-        :handleClick="()=>{handleButtonClickSignUp(true)}"
-        :buttonType="signUpBtnType"
-      />
+      <span
+        class="back-btn-span sign-up-link"
+        @click="()=>{handleButtonClickSignUp(true)}"
+      >{{buttonValueSignUp}}</span>
     </div>
     <div v-if="showSignUpForm">
       <span class="back-btn-span" @click="()=>{handleButtonClickSignUp(false)}">{{backToLogin}}</span>
@@ -203,6 +202,9 @@ export default {
     text-decoration: underline;
     color: $secondary-color;
     cursor: pointer;
+    &.sign-up-link {
+      font-weight: bold;
+    }
   }
   .login-toast {
     width: 300px;
