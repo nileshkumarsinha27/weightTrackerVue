@@ -4,13 +4,13 @@
   </div>
 </template>
 <script>
-import cx from "classnames";
+import cx from 'classnames';
 export default {
-  name: "Toast",
+  name: 'Toast',
   props: {
     toastMessage: {
       type: String,
-      default: ""
+      default: ''
     },
     closeToast: {
       type: Function,
@@ -18,22 +18,22 @@ export default {
     },
     toastType: {
       type: String,
-      default: ""
+      default: ''
     },
     customClass: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   methods: {
     getToastClass: function() {
-      return cx(["toast-container", this.toastType, this.customClass]);
+      return cx(['toast-container', this.toastType, this.customClass]);
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .toast-container {
   position: fixed;
   right: 5px;

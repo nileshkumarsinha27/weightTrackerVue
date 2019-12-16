@@ -32,33 +32,33 @@
   </div>
 </template>
 <script>
-import DateRangePicker from "vue2-daterange-picker";
-import moment from "moment";
-import "vue2-daterange-picker/dist/vue2-daterange-picker.css";
-import icnClose from "@/assets/icn_close.svg";
+import DateRangePicker from 'vue2-daterange-picker';
+import moment from 'moment';
+import 'vue2-daterange-picker/dist/vue2-daterange-picker.css';
+import icnClose from '@/assets/icn_close.svg';
 export default {
   components: { DateRangePicker },
   data: () => ({
-    opens: "center",
-    dateRange: "",
+    opens: 'center',
+    dateRange: '',
     ranges: false,
     minDate: moment()
-      .subtract(180, "days")
-      .format("YYYY-MM-DD"),
-    maxDate: moment().format("YYYY-MM-DD"),
-    clearBtnValue: "Clear Range",
-    filterBntCustomClass: "clear-btn-date-picker",
-    filterBntType: "error",
-    startDate: "",
-    endDate: "",
+      .subtract(180, 'days')
+      .format('YYYY-MM-DD'),
+    maxDate: moment().format('YYYY-MM-DD'),
+    clearBtnValue: 'Clear Range',
+    filterBntCustomClass: 'clear-btn-date-picker',
+    filterBntType: 'error',
+    startDate: '',
+    endDate: '',
     localeData: {
-      direction: "ltr",
-      format: moment.localeData().longDateFormat("L"),
-      separator: " - ",
-      applyLabel: "Apply",
-      cancelLabel: "Cancel",
-      weekLabel: "W",
-      customRangeLabel: "Custom Range",
+      direction: 'ltr',
+      format: moment.localeData().longDateFormat('L'),
+      separator: ' - ',
+      applyLabel: 'Apply',
+      cancelLabel: 'Cancel',
+      weekLabel: 'W',
+      customRangeLabel: 'Custom Range',
       daysOfWeek: moment.weekdaysMin(),
       monthNames: moment.monthsShort(),
       firstDay: moment.localeData().firstDayOfWeek()
@@ -71,9 +71,9 @@ export default {
   methods: {
     displayDate: function(start, end) {
       if (!start && !end) {
-        return "Select date";
+        return 'Select date';
       } else {
-        return this.getFormattedDate(start, "DD/MM/YYYY");
+        return this.getFormattedDate(start, 'DD/MM/YYYY');
       }
     },
     handleUpdate: function(dateObj, bool = true) {
@@ -89,7 +89,7 @@ export default {
       this.showIcon = bool;
       this.filterValueEmit({ ...filterData });
     },
-    getFormattedDate: function(date, format = "DD/MM/YYYY") {
+    getFormattedDate: function(date, format = 'DD/MM/YYYY') {
       return moment(new Date(date)).format(format);
     },
     clearDatePicker: function() {
@@ -125,7 +125,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../../styles/_variables.scss";
+@import '../../styles/_variables.scss';
 .vue-daterange-picker {
   width: 300px;
   padding: 10px 5px;

@@ -1,7 +1,7 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import Router from "../router.js";
-import CONSTANTS from "../constants.js";
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import Router from '../router.js';
+import CONSTANTS from '../constants.js';
 
 const redirectToApp = () => Router.push(CONSTANTS.ROUTES.DEFAULT);
 const redirectToLogin = () => Router.push(CONSTANTS.ROUTES.LOGIN);
@@ -45,7 +45,7 @@ const getUser = () => firebase.auth().currentUser;
 const writeUserData = (userId, name, email, imageUrl) => {
   firebase
     .database()
-    .ref("users/" + userId)
+    .ref('users/' + userId)
     .set({
       username: name,
       email: email,
@@ -56,8 +56,8 @@ const writeUserData = (userId, name, email, imageUrl) => {
 const userData = (user, cb = () => {}) =>
   firebase
     .database()
-    .ref("users")
-    .on("value", data => {
+    .ref('users')
+    .on('value', data => {
       const { uid, displayName, email, photoURL } = user;
       if (findData(data.val(), uid)) {
         writeUserData(uid, displayName, email, photoURL);
@@ -74,7 +74,7 @@ const findData = (data, uid) => {
 const updateUserData = (userId, data, cb = () => {}) => {
   firebase
     .database()
-    .ref("users/" + userId)
+    .ref('users/' + userId)
     .update(data)
     .then(cb)
     .catch(e => console.log(e));

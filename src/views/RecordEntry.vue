@@ -3,15 +3,15 @@
 </template>
 
 <script>
-import RecordEntryComponent from "@/components/recordEntryComponent/RecordEntryComponent";
-import { mapGetters } from "vuex";
+import RecordEntryComponent from '@/components/recordEntryComponent/RecordEntryComponent';
+import { mapGetters } from 'vuex';
 export default {
-  name: "RecordEntry",
+  name: 'RecordEntry',
   components: { RecordEntryComponent },
   computed: {
     ...mapGetters({
-      user: "getUserDetails",
-      weightData: "weightDataGetter"
+      user: 'getUserDetails',
+      weightData: 'weightDataGetter'
     })
   }
 };

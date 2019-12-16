@@ -7,9 +7,9 @@
   />
 </template>
 <script>
-import cx from "classnames";
+import cx from 'classnames';
 export default {
-  name: "ImageComponent",
+  name: 'ImageComponent',
   props: {
     imageSrc: {
       type: String,
@@ -17,7 +17,7 @@ export default {
     },
     imageAlt: {
       type: String,
-      default: ""
+      default: ''
     },
     handleClick: {
       type: Function,
@@ -25,12 +25,12 @@ export default {
     },
     customClass: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   methods: {
     getClass: function() {
-      return cx(["image-content", this.customClass]);
+      return cx(['image-content', this.customClass]);
     }
   }
 };

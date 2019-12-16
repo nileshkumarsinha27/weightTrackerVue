@@ -5,10 +5,10 @@
   </div>
 </template>
 <script>
-import CONSTANTS from "@/constants";
-import TableView from "@/components/tableView/TableView";
+import CONSTANTS from '@/constants';
+import TableView from '@/components/tableView/TableView';
 export default {
-  name: "WeightTable",
+  name: 'WeightTable',
   props: {
     data: {
       type: Array,
@@ -18,15 +18,15 @@ export default {
   data: () => ({
     title: CONSTANTS.WIDGET_TITLES.LIST,
     headers: {
-      date: "date",
-      weight: "weight"
+      date: 'date',
+      weight: 'weight'
     }
   }),
   components: { TableView }
 };
 </script>
 <style lang="scss">
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .weight-list-widget {
   width: 40%;
   box-sizing: border-box;

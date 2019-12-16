@@ -16,22 +16,22 @@
   </div>
 </template>
 <script>
-import CONSTANTS from "@/constants";
-import AppLogo from "@/assets/weightTracker.svg";
-import ImageComponent from "@/components/imageComponent/ImageComponent";
-import Button from "@/components/button/Button";
-import Router from "@/router.js";
+import CONSTANTS from '@/constants';
+import AppLogo from '@/assets/weightTracker.svg';
+import ImageComponent from '@/components/imageComponent/ImageComponent';
+import Button from '@/components/button/Button';
+import Router from '@/router.js';
 export default {
-  name: "MainViewComponent",
+  name: 'MainViewComponent',
   data: () => ({
     mainViewTitle: CONSTANTS.PAGE_TITLES.MAIN_VIEW,
     mainViewDescription: CONSTANTS.MAIN_VIEW_COMPONENT.DESCRIPTION,
     appIcn: AppLogo,
     appLogoText: CONSTANTS.MAIN_VIEW_COMPONENT.IMAGE_ALT,
-    appImageClass: "main-logo",
+    appImageClass: 'main-logo',
     btnValue: CONSTANTS.MAIN_VIEW_COMPONENT.BTN_VALUE,
-    btnType: "primary",
-    btnClass: "main-view-btn"
+    btnType: 'primary',
+    btnClass: 'main-view-btn'
   }),
   components: { ImageComponent, Button },
   methods: {

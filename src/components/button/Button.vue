@@ -1,19 +1,23 @@
 <template>
   <a :href="href" v-if="checkHref()" :class="getClassName('anchor-tag')">
-    {{
-    value
-    }}
+    {{ value }}
   </a>
-  <button :class="`button ${getClassName(buttonType)}`" v-else @click="clickHandle">{{ value }}</button>
+  <button
+    :class="`button ${getClassName(buttonType)}`"
+    v-else
+    @click="clickHandle"
+  >
+    {{ value }}
+  </button>
 </template>
 <script>
-import cx from "classnames";
+import cx from 'classnames';
 export default {
-  name: "Button",
+  name: 'Button',
   props: {
     customClass: {
       type: String,
-      default: ""
+      default: ''
     },
     handleClick: {
       type: Function,
@@ -21,15 +25,15 @@ export default {
     },
     href: {
       type: String,
-      deafult: ""
+      deafult: ''
     },
     buttonType: {
       type: String,
-      deafult: "primary"
+      deafult: 'primary'
     },
     value: {
       type: String,
-      deafult: ""
+      deafult: ''
     },
     isDisabled: {
       type: Boolean,
@@ -41,7 +45,7 @@ export default {
       return cx([type, this.customClass, { disabled: this.isDisabled }]);
     },
     checkHref: function() {
-      return this.href && this.href !== "" ? true : false;
+      return this.href && this.href !== '' ? true : false;
     },
     clickHandle: function() {
       this.handleClick();
@@ -50,7 +54,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .button {
   box-sizing: border-box;
   width: 150px;

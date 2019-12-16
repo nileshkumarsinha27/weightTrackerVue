@@ -1,6 +1,10 @@
 <template>
   <div class="email-verify-container">
-    <ImageComponent :imageSrc="appIcn" :alt="appLogoText" :customClass="appImageClass" />
+    <ImageComponent
+      :imageSrc="appIcn"
+      :alt="appLogoText"
+      :customClass="appImageClass"
+    />
     <h2>{{ mainViewTitle }}</h2>
     <p>{{ mainViewDescription }}</p>
     <Button
@@ -13,38 +17,44 @@
       v-if="toast.showToast"
       :toastMessage="toast.message"
       :toastType="toast.type"
-      :closeToast="()=>{showHideToast(false,'','')}"
+      :closeToast="
+        () => {
+          showHideToast(false, '', '');
+        }
+      "
       :customClass="loginToastClass"
     />
-    <span class="back-btn-span" @click="backToLoginScreen">{{backToLogin}}</span>
+    <span class="back-btn-span" @click="backToLoginScreen">{{
+      backToLogin
+    }}</span>
   </div>
 </template>
 <script>
-import Button from "@/components/button/Button";
-import Toast from "../components/toast/Toast";
-import ImageComponent from "@/components/imageComponent/ImageComponent";
-import CONSTANTS from "@/constants";
-import AppLogo from "@/assets/weightTracker.svg";
-import { sendVerificationLink, logout } from "@/auth/Auth";
+import Button from '@/components/button/Button';
+import Toast from '../components/toast/Toast';
+import ImageComponent from '@/components/imageComponent/ImageComponent';
+import CONSTANTS from '@/constants';
+import AppLogo from '@/assets/weightTracker.svg';
+import { sendVerificationLink, logout } from '@/auth/Auth';
 export default {
-  name: "EmailVerify",
+  name: 'EmailVerify',
   components: { Button, ImageComponent, Toast },
   data: () => ({
     mainViewTitle: CONSTANTS.PAGE_TITLES.MAIN_VIEW,
     mainViewDescription: CONSTANTS.EMAIL_VERIFY.DESCRIPTION,
     appIcn: AppLogo,
     appLogoText: CONSTANTS.MAIN_VIEW_COMPONENT.IMAGE_ALT,
-    appImageClass: "main-logo",
+    appImageClass: 'main-logo',
     btnValue: CONSTANTS.EMAIL_VERIFY.BTN_VALUE,
-    btnType: "primary",
-    btnClass: "email-verify-btn",
+    btnType: 'primary',
+    btnClass: 'email-verify-btn',
     toast: {
-      message: "",
-      type: "",
+      message: '',
+      type: '',
       showToast: false
     },
-    loginToastClass: "email-verify-toast",
-    backToLogin: "Back to sign in"
+    loginToastClass: 'email-verify-toast',
+    backToLogin: 'Back to sign in'
   }),
   methods: {
     handleBtnClick: function() {
@@ -66,7 +76,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .email-verify-container {
   display: flex;
   justify-content: center;

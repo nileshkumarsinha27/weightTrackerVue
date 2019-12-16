@@ -14,20 +14,20 @@
   </fragment>
 </template>
 <script>
-import cx from "classnames";
+import cx from 'classnames';
 export default {
-  name: "InputBox",
+  name: 'InputBox',
   data: () => ({
-    inputVal: ""
+    inputVal: ''
   }),
   props: {
     typeSent: {
       type: String,
-      default: "text"
+      default: 'text'
     },
     name: {
       type: String,
-      default: ""
+      default: ''
     },
     handleChange: {
       type: Function,
@@ -35,15 +35,15 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ""
+      default: ''
     },
     labelClass: {
       type: String,
-      default: ""
+      default: ''
     },
     inputClass: {
       type: String,
-      default: ""
+      default: ''
     },
     isClear: {
       type: Boolean,
@@ -51,11 +51,11 @@ export default {
     },
     inputName: {
       type: String,
-      default: ""
+      default: ''
     },
     defaultValue: {
       type: String,
-      default: ""
+      default: ''
     },
     disabled: {
       type: Boolean,
@@ -72,13 +72,13 @@ export default {
       return cx([this.labelClass]);
     },
     getInputClass: function() {
-      return cx(["input-component", this.inputClass]);
+      return cx(['input-component', this.inputClass]);
     }
   },
   watch: {
     isClear: function(next, prev) {
       if (next !== prev && next) {
-        this.inputVal = "";
+        this.inputVal = '';
       }
     },
     defaultValue: function(next, prev) {

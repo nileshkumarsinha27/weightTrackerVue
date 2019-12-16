@@ -14,19 +14,21 @@
           }
         "
         :class="getSelectedClassName(item.route)"
-      >{{ item.name }}</li>
+      >
+        {{ item.name }}
+      </li>
     </ul>
   </nav>
 </template>
 <script>
-import CONSTANTS from "@/constants";
-import Router from "@/router.js";
-import cx from "classnames";
-import { logout } from "../../auth/Auth";
-import Store from "@/store";
-import ACTIONS from "@/actions.constants.js";
+import CONSTANTS from '@/constants';
+import Router from '@/router.js';
+import cx from 'classnames';
+import { logout } from '../../auth/Auth';
+import Store from '@/store';
+import ACTIONS from '@/actions.constants.js';
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   data: () => ({
     navData: CONSTANTS.NAVBAR.DATA,
     deafultRoute: CONSTANTS.ROUTES.DEFAULT
@@ -39,9 +41,9 @@ export default {
     getSelectedClassName: function(route) {
       const { selectedRoute } = this;
       if (selectedRoute === route) {
-        return cx(["selected"]);
+        return cx(['selected']);
       }
-      return "";
+      return '';
     },
     logoutFunc: function() {
       logout();
@@ -56,7 +58,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/_variables";
+@import '@/styles/_variables';
 .nav-bar {
   position: fixed;
   left: 0;

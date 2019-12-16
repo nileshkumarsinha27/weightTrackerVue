@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: "TableHeader",
+  name: 'TableHeader',
   props: {
     header: {
       type: String,

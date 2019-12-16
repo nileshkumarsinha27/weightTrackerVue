@@ -1,10 +1,10 @@
 <script>
-import { isDataExists } from "@/utils";
-import CONSTANTS from "@/constants.js";
-import { Line } from "vue-chartjs";
+import { isDataExists } from '@/utils';
+import CONSTANTS from '@/constants.js';
+import { Line } from 'vue-chartjs';
 
 export default {
-  name: "WeightLineChart",
+  name: 'WeightLineChart',
   extends: Line,
   props: {
     data: {
@@ -43,7 +43,7 @@ export default {
           datasets: [
             {
               label: CONSTANTS.DATA_KEYS.WEIGHT,
-              backgroundColor: "rgba(3,218,198,0.5)",
+              backgroundColor: 'rgba(3,218,198,0.5)',
               data: this.yLabelValues
             }
           ]

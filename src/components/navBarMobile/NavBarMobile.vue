@@ -14,19 +14,21 @@
           }
         "
         :class="getSelectedClassName(item.route)"
-      >{{ item.name }}</li>
+      >
+        {{ item.name }}
+      </li>
     </ul>
   </nav>
 </template>
 <script>
-import CONSTANTS from "@/constants";
-import Router from "@/router.js";
-import cx from "classnames";
-import { logout } from "../../auth/Auth";
-import Store from "@/store.js";
-import ACTIONS from "@/actions.constants.js";
+import CONSTANTS from '@/constants';
+import Router from '@/router.js';
+import cx from 'classnames';
+import { logout } from '../../auth/Auth';
+import Store from '@/store.js';
+import ACTIONS from '@/actions.constants.js';
 export default {
-  name: "NavBarMobile",
+  name: 'NavBarMobile',
   data: () => ({
     navData: CONSTANTS.NAVBAR.DATA,
     deafultRoute: CONSTANTS.ROUTES.DEFAULT
@@ -40,9 +42,9 @@ export default {
     getSelectedClassName: function(route) {
       const { selectedRoute } = this;
       if (selectedRoute === route) {
-        return cx(["selected"]);
+        return cx(['selected']);
       }
-      return "";
+      return '';
     },
     logoutFunc: function() {
       logout();
@@ -51,7 +53,7 @@ export default {
       if (
         this.$refs.navbarMenuMobile &&
         !this.$refs.navbarMenuMobile.contains(e.target) &&
-        !e.target.classList.contains("hamburger-menu")
+        !e.target.classList.contains('hamburger-menu')
       ) {
         this.handleOutSideClick();
       }
@@ -59,19 +61,19 @@ export default {
   },
   mounted: function() {
     document
-      .querySelector("body")
-      .addEventListener("mousedown", this.outsideClick);
+      .querySelector('body')
+      .addEventListener('mousedown', this.outsideClick);
     document
-      .querySelector("body")
-      .addEventListener("touchend", this.outsideClick);
+      .querySelector('body')
+      .addEventListener('touchend', this.outsideClick);
   },
   beforeDestroy: function() {
     document
-      .querySelector("body")
-      .removeEventListener("mousedown", this.outsideClick);
+      .querySelector('body')
+      .removeEventListener('mousedown', this.outsideClick);
     document
-      .querySelector("body")
-      .removeEventListener("touchend", this.outsideClick);
+      .querySelector('body')
+      .removeEventListener('touchend', this.outsideClick);
   },
   props: {
     handleOutSideClick: {
@@ -86,7 +88,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .nav-bar {
   width: 40%;
   box-sizing: border-box;

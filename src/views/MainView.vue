@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import Header from "@/components/header/Header";
-import NavBar from "@/components/navbar/Navbar";
-import NavBarMobile from "@/components/navBarMobile/NavBarMobile";
-import { getUser, userData } from "@/auth/Auth";
-import ACTIONS from "@/actions.constants";
-import Store from "@/store";
-import { mapGetters } from "vuex";
+import Header from '@/components/header/Header';
+import NavBar from '@/components/navbar/Navbar';
+import NavBarMobile from '@/components/navBarMobile/NavBarMobile';
+import { getUser, userData } from '@/auth/Auth';
+import ACTIONS from '@/actions.constants';
+import Store from '@/store';
+import { mapGetters } from 'vuex';
 export default {
-  name: "MainView",
+  name: 'MainView',
   components: { Header, NavBar, NavBarMobile },
   beforeMount: function() {
     userData(this.getPayload(), this.updateStore);
@@ -48,8 +48,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      showBurger: "showBurger",
-      selectedRoute: "selectedRoute"
+      showBurger: 'showBurger',
+      selectedRoute: 'selectedRoute'
     })
   }
 };

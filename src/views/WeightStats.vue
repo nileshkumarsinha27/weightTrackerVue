@@ -6,9 +6,9 @@
   </fragment>
 </template>
 <script>
-import WeightStatsComponent from "@/components/weightStatsComponent/WeightStatsComponent";
+import WeightStatsComponent from '@/components/weightStatsComponent/WeightStatsComponent';
 export default {
-  name: "WeightStats",
+  name: 'WeightStats',
   components: { WeightStatsComponent }
 };
 </script>

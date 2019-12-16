@@ -2,9 +2,9 @@
   <img :src="loader" alt="loader" />
 </template>
 <script>
-import loadingIcn from "@/assets/loading.gif";
+import loadingIcn from '@/assets/loading.gif';
 export default {
-  name: "Loader",
+  name: 'Loader',
   data: () => ({
     loader: loadingIcn
   })

@@ -13,18 +13,20 @@
             handleProfileClick(item.data);
           }
         "
-      >{{ item.label }}</li>
+      >
+        {{ item.label }}
+      </li>
     </ul>
   </div>
 </template>
 <script>
-import CONSTANTS from "@/constants";
-import Router from "@/router.js";
-import { logout } from "@/auth/Auth";
-import Store from "@/store.js";
-import ACTIONS from "@/actions.constants";
+import CONSTANTS from '@/constants';
+import Router from '@/router.js';
+import { logout } from '@/auth/Auth';
+import Store from '@/store.js';
+import ACTIONS from '@/actions.constants';
 export default {
-  name: "ProfileDropDown",
+  name: 'ProfileDropDown',
   data: () => ({
     profileDropDownData: CONSTANTS.PROFILE_DROPDOWN_MENU
   }),
@@ -41,19 +43,19 @@ export default {
   methods: {
     handleProfileClick: function(key) {
       switch (key) {
-        case "viewProfile":
+        case 'viewProfile':
           Router.push(CONSTANTS.ROUTES.PROFILE);
           Store.dispatch(
             ACTIONS.NAVBAR.SET_NAV_ROUTE,
             CONSTANTS.ROUTES.PROFILE
           );
           break;
-        case "logout":
+        case 'logout':
           Store.dispatch(ACTIONS.LOGIN.CLEAR_STORE_DATA);
           logout();
-
           break;
-          deafult: break;
+        default:
+          break;
       }
     },
     outsideClick: function(e) {
@@ -67,24 +69,24 @@ export default {
   },
   mounted: function() {
     document
-      .querySelector("body")
-      .addEventListener("mousedown", this.outsideClick);
+      .querySelector('body')
+      .addEventListener('mousedown', this.outsideClick);
     document
-      .querySelector("body")
-      .addEventListener("touchend", this.outsideClick);
+      .querySelector('body')
+      .addEventListener('touchend', this.outsideClick);
   },
   beforeDestroy: function() {
     document
-      .querySelector("body")
-      .removeEventListener("mousedown", this.outsideClick);
+      .querySelector('body')
+      .removeEventListener('mousedown', this.outsideClick);
     document
-      .querySelector("body")
-      .removeEventListener("touchend", this.outsideClick);
+      .querySelector('body')
+      .removeEventListener('touchend', this.outsideClick);
   }
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .profile-dropdown {
   position: absolute;
   background: $white-color;

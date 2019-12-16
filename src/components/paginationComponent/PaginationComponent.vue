@@ -12,9 +12,9 @@
   ></paginate>
 </template>
 <script>
-import paginate from "vuejs-paginate";
+import paginate from 'vuejs-paginate';
 export default {
-  name: "PaginationComponent",
+  name: 'PaginationComponent',
   props: {
     pageCount: {
       type: Number,
@@ -34,19 +34,19 @@ export default {
     },
     prevText: {
       type: String,
-      default: "<"
+      default: '<'
     },
     nextText: {
       type: String,
-      default: ">"
+      default: '>'
     },
     containerClass: {
       type: String,
-      default: ""
+      default: ''
     },
     pageClass: {
       type: String,
-      default: ""
+      default: ''
     },
     page: {
       type: Number,

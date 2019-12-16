@@ -1,10 +1,10 @@
 <script>
-import { isDataExists } from "@/utils";
-import CONSTANTS from "@/constants.js";
-import { Bar } from "vue-chartjs";
+import { isDataExists } from '@/utils';
+import CONSTANTS from '@/constants.js';
+import { Bar } from 'vue-chartjs';
 
 export default {
-  name: "WeightBarChart",
+  name: 'WeightBarChart',
   extends: Bar,
   props: {
     data: {
@@ -43,7 +43,7 @@ export default {
           datasets: [
             {
               label: CONSTANTS.DATA_KEYS.WEIGHT,
-              backgroundColor: "#03dac6",
+              backgroundColor: '#03dac6',
               data: this.yLabelValues
             }
           ]
@@ -54,7 +54,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" >
+<style lang="scss">
 #bar-chart {
   width: 100% !important;
 }

@@ -1,10 +1,14 @@
 <template>
   <div class="profile-update-container">
-    <h1>{{profileUpdateHeading}}</h1>
+    <h1>{{ profileUpdateHeading }}</h1>
     <div class="left-container">
-      <form class="profile-details-form" :autocomplete="autoCompleteStatus" @submit="handleSubmit">
+      <form
+        class="profile-details-form"
+        :autocomplete="autoCompleteStatus"
+        @submit="handleSubmit"
+      >
         <InputBox
-          v-for="(item,index) in profileFields"
+          v-for="(item, index) in profileFields"
           :typeSent="item.type"
           :key="index"
           :name="item.name"
@@ -28,32 +32,36 @@
       v-if="toastData.showToast"
       :toastMessage="toastData.message"
       :toastType="toastData.type"
-      :closeToast="()=>{showHideToast(false)}"
+      :closeToast="
+        () => {
+          showHideToast(false);
+        }
+      "
     />
   </div>
 </template>
 <script>
-import CONSTANTS from "@/constants";
-import InputBox from "@/components/inputBox/InputBox";
-import Button from "@/components/button/Button";
-import Toast from "@/components/toast/Toast";
-import { updateUserData, getUser } from "@/auth/Auth";
+import CONSTANTS from '@/constants';
+import InputBox from '@/components/inputBox/InputBox';
+import Button from '@/components/button/Button';
+import Toast from '@/components/toast/Toast';
+import { updateUserData, getUser } from '@/auth/Auth';
 export default {
-  name: "ProfileComponent",
+  name: 'ProfileComponent',
   data: () => ({
-    profileUpdateHeading: "Profile Details",
-    autoCompleteStatus: "off",
+    profileUpdateHeading: 'Profile Details',
+    autoCompleteStatus: 'off',
     profileFields: CONSTANTS.PROFILE.FIELDS,
-    inputClass: "profile-input",
-    labelClass: "hidden-class",
+    inputClass: 'profile-input',
+    labelClass: 'hidden-class',
     formData: {
-      displayName: "",
-      location: ""
+      displayName: '',
+      location: ''
     },
     disabledFields: CONSTANTS.PROFILE.DISABLED_FIELDS,
-    btnValueUpdate: "Update Profile",
-    updateBtnType: "primary",
-    updateBtnClass: "profile-update-btn",
+    btnValueUpdate: 'Update Profile',
+    updateBtnType: 'primary',
+    updateBtnClass: 'profile-update-btn',
     toastData: {
       showToast: false,
       toastType: CONSTANTS.LOGIN.TOAST_TYPES.SUCCESS,
@@ -97,8 +105,8 @@ export default {
       const { uid } = getUser();
       const { email } = this.user;
       const dataSent = {
-        displayName: this.getDataSentData("displayName"),
-        location: this.getDataSentData("location"),
+        displayName: this.getDataSentData('displayName'),
+        location: this.getDataSentData('location'),
         email
       };
       updateUserData(uid, dataSent, () => {
@@ -112,14 +120,14 @@ export default {
       };
     },
     getDataSentData: function(key) {
-      return this.formData[key] === "" ? this.user[key] : this.formData[key];
+      return this.formData[key] === '' ? this.user[key] : this.formData[key];
     }
   },
   components: { InputBox, Button, Toast }
 };
 </script>
-<style lang="scss" >
-@import "@/styles/_variables";
+<style lang="scss">
+@import '@/styles/_variables';
 .profile-update-container {
   display: flex;
   width: 100%;

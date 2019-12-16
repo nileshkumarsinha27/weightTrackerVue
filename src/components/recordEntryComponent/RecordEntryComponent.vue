@@ -1,7 +1,11 @@
 <template>
   <div class="record-entry-container">
     <p class="form-heading">Enter details</p>
-    <form :autocomplete="autoCompleteStatus" @submit="handleSubmit" class="data-form">
+    <form
+      :autocomplete="autoCompleteStatus"
+      @submit="handleSubmit"
+      class="data-form"
+    >
       <InputBox
         :typeSent="inputBoxData.type"
         :name="inputBoxData.name"
@@ -32,31 +36,29 @@
   </div>
 </template>
 <script>
-import uuidv1 from "uuid/v1";
-import CONSTANTS from "@/constants";
-import InputBox from "@/components/inputBox/InputBox";
-import Button from "@/components/button/Button";
-import DatePicker from "@/components/datePicker/DatePicker";
-import Toast from "@/components/toast/Toast";
-import { checkEmptyStr } from "@/utils";
-import Store from "@/store.js";
-import ACTIONS from "@/actions.constants.js";
-import { updateUserData, getUser } from "@/auth/Auth";
+import uuidv1 from 'uuid/v1';
+import CONSTANTS from '@/constants';
+import InputBox from '@/components/inputBox/InputBox';
+import Button from '@/components/button/Button';
+import DatePicker from '@/components/datePicker/DatePicker';
+import Toast from '@/components/toast/Toast';
+import { checkEmptyStr } from '@/utils';
+import { updateUserData, getUser } from '@/auth/Auth';
 export default {
-  name: "MainContent",
+  name: 'MainContent',
   data: () => ({
     inputBoxData: CONSTANTS.WEIGHT_INPUT,
-    weightVal: "",
-    btnValue: "Submit",
-    btnType: "primary",
+    weightVal: '',
+    btnValue: 'Submit',
+    btnType: 'primary',
     disableStatus: true,
     autoCompleteStatus: CONSTANTS.AUTO_COMPLETE_STATUS,
     dataObject: {
-      date: "",
-      weight: ""
+      date: '',
+      weight: ''
     },
     showToast: false,
-    toastMsg: "",
+    toastMsg: '',
     isClear: false,
     isClearPicker: false
   }),
@@ -71,7 +73,7 @@ export default {
       } else {
         this.dataObject = {
           ...this.dataObject,
-          weight: ""
+          weight: ''
         };
       }
       this.checkDisable();
@@ -85,7 +87,7 @@ export default {
     handleUpdate: function(data) {
       this.dataObject = {
         ...this.dataObject,
-        date: data.startDate || ""
+        date: data.startDate || ''
       };
       this.checkDisable();
     },
@@ -120,7 +122,7 @@ export default {
         }
       );
     },
-    handleOpenCloseToast: function(toastStatus, text = "") {
+    handleOpenCloseToast: function(toastStatus, text = '') {
       this.showToast = toastStatus;
       this.toastMsg = text;
     },
@@ -137,13 +139,13 @@ export default {
     },
     weightData: {
       type: Array,
-      default: []
+      default: new Array()
     }
   }
 };
 </script>
 <style lang="scss">
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .record-entry-container {
   animation: opacityAnimation 0.5s ease;
   width: 100%;

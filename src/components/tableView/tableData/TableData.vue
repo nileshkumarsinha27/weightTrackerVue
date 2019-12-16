@@ -3,9 +3,9 @@
   <td v-else>{{ renderTime(data) }}</td>
 </template>
 <script>
-import { getTimeFromMoment } from "@/utils";
+import { getTimeFromMoment } from '@/utils';
 export default {
-  name: "TableData",
+  name: 'TableData',
   props: {
     data: {
       required: true
@@ -18,8 +18,8 @@ export default {
   methods: {
     checkIfString: function() {
       return (
-        this.displayData.toLowerCase() === "string" &&
-        !(this.headerKey === "date")
+        this.displayData.toLowerCase() === 'string' &&
+        !(this.headerKey === 'date')
       );
     },
     renderTime: function(data) {

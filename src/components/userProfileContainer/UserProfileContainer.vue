@@ -26,13 +26,13 @@
   </div>
 </template>
 <script>
-import ImageComponent from "@/components/imageComponent/ImageComponent";
-import ProfileDropDown from "@/components/profileDropDown/ProfileDropDown";
+import ImageComponent from '@/components/imageComponent/ImageComponent';
+import ProfileDropDown from '@/components/profileDropDown/ProfileDropDown';
 export default {
-  name: "UserProfileContainer",
+  name: 'UserProfileContainer',
   data: () => ({
-    profileAlt: "profile",
-    initialsClass: "profile-image",
+    profileAlt: 'profile',
+    initialsClass: 'profile-image',
     showDropDown: false
   }),
   props: {
@@ -70,7 +70,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "@/styles/_variables";
+@import '@/styles/_variables';
 .profile-container {
   width: 40px;
   height: 40px;

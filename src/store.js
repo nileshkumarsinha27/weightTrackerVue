@@ -1,9 +1,9 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import ACTIONS from "@/actions.constants";
-import MUTATIONS from "@/mutations.constants";
-import CONSTANTS from "@/constants.js";
-import { getValues, getTimeFromMoment } from "@/utils";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import ACTIONS from '@/actions.constants';
+import MUTATIONS from '@/mutations.constants';
+import CONSTANTS from '@/constants.js';
+import { getValues, getTimeFromMoment } from '@/utils';
 
 Vue.use(Vuex);
 

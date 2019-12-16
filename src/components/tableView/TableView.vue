@@ -24,10 +24,10 @@
   </div>
 </template>
 <script>
-import TableHeader from "./tableHeader/TableHeader";
-import TableData from "./tableData/TableData";
+import TableHeader from './tableHeader/TableHeader';
+import TableData from './tableData/TableData';
 export default {
-  name: "TableView",
+  name: 'TableView',
   components: { TableHeader, TableData },
   props: {
     headers: {
@@ -42,7 +42,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../../styles/_variables.scss";
+@import '../../styles/_variables.scss';
 .table-container {
   margin: 32px 0;
   max-height: 40vh;

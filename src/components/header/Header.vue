@@ -1,6 +1,11 @@
 <template>
   <header class="header">
-    <img :src="hamburger" alt="menu" class="hamburger-menu" @click="showNavBar" />
+    <img
+      :src="hamburger"
+      alt="menu"
+      class="hamburger-menu"
+      @click="showNavBar"
+    />
     <img
       :src="appLogo"
       alt="logo"
@@ -16,16 +21,16 @@
   </header>
 </template>
 <script>
-import CONSTANTS from "@/constants";
-import UserProfileContainer from "@/components/userProfileContainer/UserProfileContainer";
-import appIcn from "@/assets/weightTracker.svg";
-import hamburgerIcn from "@/assets/hamburger.svg";
-import { mapGetters } from "vuex";
-import Router from "@/router.js";
-import Store from "@/store.js";
-import ACTIONS from "@/actions.constants.js";
+import CONSTANTS from '@/constants';
+import UserProfileContainer from '@/components/userProfileContainer/UserProfileContainer';
+import appIcn from '@/assets/weightTracker.svg';
+import hamburgerIcn from '@/assets/hamburger.svg';
+import { mapGetters } from 'vuex';
+import Router from '@/router.js';
+import Store from '@/store.js';
+import ACTIONS from '@/actions.constants.js';
 export default {
-  name: "Header",
+  name: 'Header',
   data: () => ({
     title: CONSTANTS.APP_TITLE,
     defaultRoute: CONSTANTS.ROUTES.DEFAULT,
@@ -44,13 +49,13 @@ export default {
   components: { UserProfileContainer },
   computed: {
     ...mapGetters({
-      user: "getUserDetails"
+      user: 'getUserDetails'
     })
   }
 };
 </script>
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
+@import '@/styles/_variables.scss';
 .header {
   width: 100%;
   display: flex;

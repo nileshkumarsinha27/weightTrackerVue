@@ -7,7 +7,11 @@
     />
     <h1>{{ appTitle }}</h1>
     <h3>{{ getButtonValue() }}</h3>
-    <form class="login-container-form" @submit="handleSubmit" :autocomplete="autoCompleteStatus">
+    <form
+      class="login-container-form"
+      @submit="handleSubmit"
+      :autocomplete="autoCompleteStatus"
+    >
       <InputBox
         v-for="(item, index) in formData"
         :key="index"
@@ -33,60 +37,77 @@
       </div>
       <span
         class="back-btn-span sign-up-link"
-        @click="()=>{handleButtonClickSignUp(true)}"
-      >{{buttonValueSignUp}}</span>
+        @click="
+          () => {
+            handleButtonClickSignUp(true);
+          }
+        "
+        >{{ buttonValueSignUp }}</span
+      >
     </div>
     <div v-if="showSignUpForm">
-      <span class="back-btn-span" @click="()=>{handleButtonClickSignUp(false)}">{{backToLogin}}</span>
+      <span
+        class="back-btn-span"
+        @click="
+          () => {
+            handleButtonClickSignUp(false);
+          }
+        "
+        >{{ backToLogin }}</span
+      >
     </div>
     <Toast
       v-if="toast.showToast"
       :toastMessage="toast.message"
       :toastType="toast.type"
-      :closeToast="()=>{showHideToast(false,'','')}"
+      :closeToast="
+        () => {
+          showHideToast(false, '', '');
+        }
+      "
       :customClass="loginToastClass"
     />
   </div>
 </template>
 
 <script>
-import InputBox from "../components/inputBox/InputBox";
-import Button from "../components/button/Button";
-import ImageComponent from "../components/imageComponent/ImageComponent";
-import Toast from "../components/toast/Toast";
-import CONSTANTS from "../constants";
-import appIcon from "../assets/weightTracker.svg";
-import { checkEmptyStr, matchRegex } from "../utils";
-import { signUp, login } from "../auth/Auth";
+import InputBox from '../components/inputBox/InputBox';
+import Button from '../components/button/Button';
+import ImageComponent from '../components/imageComponent/ImageComponent';
+import Toast from '../components/toast/Toast';
+import CONSTANTS from '../constants';
+import appIcon from '../assets/weightTracker.svg';
+import { checkEmptyStr, matchRegex } from '../utils';
+import { signUp, login } from '../auth/Auth';
 export default {
-  name: "Login",
+  name: 'Login',
   data: () => ({
     formData: CONSTANTS.LOGIN.LOGIN_FORM_DATA,
     imageData: {
       src: appIcon,
-      alt: "App Logo"
+      alt: 'App Logo'
     },
-    buttonValueSignIn: "Sign In",
-    buttonValueSignUp: "Sign Up",
+    buttonValueSignIn: 'Sign In',
+    buttonValueSignUp: 'Sign Up',
     formDataSent: {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     },
     appTitle: CONSTANTS.APP_TITLE,
-    appImageClass: "main-logo",
-    btnType: "primary",
-    labelClass: "hidden-class",
-    inputClass: "common-input",
-    autoCompleteStatus: "off",
+    appImageClass: 'main-logo',
+    btnType: 'primary',
+    labelClass: 'hidden-class',
+    inputClass: 'common-input',
+    autoCompleteStatus: 'off',
     showSignUpForm: false,
-    signUpBtnType: "secondary",
-    backToLogin: "Back to sign in",
+    signUpBtnType: 'secondary',
+    backToLogin: 'Back to sign in',
     toast: {
-      message: "",
-      type: "",
+      message: '',
+      type: '',
       showToast: false
     },
-    loginToastClass: "login-toast",
+    loginToastClass: 'login-toast',
     isClear: false
   }),
   components: { InputBox, Button, ImageComponent, Toast },
@@ -138,7 +159,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "../styles/_variables.scss";
+@import '../styles/_variables.scss';
 .login-container {
   width: 50%;
   margin: 0 auto;
