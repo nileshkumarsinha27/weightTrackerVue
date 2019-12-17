@@ -11,6 +11,9 @@ const ACTIONS = {
   },
   NAVBAR: {
     SET_NAV_ROUTE: 'SET_NAV_ROUTE'
+  },
+  PROFILE: {
+    UPDATE_PROFILE_DATA: 'UPDATE_PROFILE_DATA'
   }
 };
 export default ACTIONS;

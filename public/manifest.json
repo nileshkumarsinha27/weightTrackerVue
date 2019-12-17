@@ -1,6 +1,6 @@
 {
-  "name": "weight-tracker-pwa",
-  "short_name": "weight-tracker-pwa",
+  "name": "Weight Tracker",
+  "short_name": "Weight Tracker",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",

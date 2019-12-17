@@ -2,11 +2,7 @@
   <div class="profile-update-container">
     <h1>{{ profileUpdateHeading }}</h1>
     <div class="left-container">
-      <form
-        class="profile-details-form"
-        :autocomplete="autoCompleteStatus"
-        @submit="handleSubmit"
-      >
+      <form class="profile-details-form" :autocomplete="autoCompleteStatus" @submit="handleSubmit">
         <InputBox
           v-for="(item, index) in profileFields"
           :typeSent="item.type"
@@ -46,6 +42,8 @@ import InputBox from '@/components/inputBox/InputBox';
 import Button from '@/components/button/Button';
 import Toast from '@/components/toast/Toast';
 import { updateUserData, getUser } from '@/auth/Auth';
+import Store from '@/store.js';
+import ACTIONS from '@/actions.constants';
 export default {
   name: 'ProfileComponent',
   data: () => ({
@@ -54,10 +52,6 @@ export default {
     profileFields: CONSTANTS.PROFILE.FIELDS,
     inputClass: 'profile-input',
     labelClass: 'hidden-class',
-    formData: {
-      displayName: '',
-      location: ''
-    },
     disabledFields: CONSTANTS.PROFILE.DISABLED_FIELDS,
     btnValueUpdate: 'Update Profile',
     updateBtnType: 'primary',
@@ -79,10 +73,7 @@ export default {
       e.preventDefault();
     },
     changeHandle: function(val, key) {
-      this.formData = {
-        ...this.formData,
-        [key]: val
-      };
+      Store.dispatch(ACTIONS.PROFILE.UPDATE_PROFILE_DATA, { [key]: val });
     },
     checkDisabled: function(key) {
       if (this.disabledFields.findIndex(elem => elem === key) !== -1) {
@@ -123,7 +114,17 @@ export default {
       return this.formData[key] === '' ? this.user[key] : this.formData[key];
     }
   },
-  components: { InputBox, Button, Toast }
+  components: { InputBox, Button, Toast },
+  computed: {
+    formData: {
+      get: function() {
+        return this.user;
+      },
+      set: function(val) {
+        return val;
+      }
+    }
+  }
 };
 </script>
 <style lang="scss">

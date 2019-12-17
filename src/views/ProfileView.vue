@@ -9,7 +9,7 @@ export default {
   components: { ProfileViewComponent },
   computed: {
     ...mapGetters({
-      user: 'getUserDetails'
+      user: 'getUserData'
     })
   }
 };
