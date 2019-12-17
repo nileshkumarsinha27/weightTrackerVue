@@ -6,7 +6,8 @@
       :customClass="appImageClass"
     />
     <h2>{{ mainViewTitle }}</h2>
-    <p>{{ mainViewDescription }}</p>
+    <UserNameComponent :user="user" />
+    <p class="main-descirption">{{ mainViewDescription }}</p>
     <Button
       :value="btnValue"
       :buttonType="btnType"
@@ -19,8 +20,10 @@
 import CONSTANTS from '@/constants';
 import AppLogo from '@/assets/weightTracker.svg';
 import ImageComponent from '@/components/imageComponent/ImageComponent';
+import UserNameComponent from '@/components/userNameComponent/UserNameComponent';
 import Button from '@/components/button/Button';
 import Router from '@/router.js';
+import { mapGetters } from 'vuex';
 export default {
   name: 'MainViewComponent',
   data: () => ({
@@ -33,11 +36,16 @@ export default {
     btnType: 'primary',
     btnClass: 'main-view-btn'
   }),
-  components: { ImageComponent, Button },
+  components: { ImageComponent, Button, UserNameComponent },
   methods: {
     redirectionHandle: function() {
       Router.push(CONSTANTS.ROUTES.RECORD_ENTRY);
     }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'getUserDetails'
+    })
   }
 };
 </script>
@@ -68,6 +76,9 @@ export default {
   }
   .main-view-btn {
     margin: 20px 0;
+  }
+  .main-descirption {
+    font-size: 18px;
   }
 }
 </style>

@@ -102,6 +102,11 @@ const CONSTANTS = {
   EMAIL_VERIFY: {
     DESCRIPTION: 'Please verify your email to continue',
     BTN_VALUE: 'Send Link'
+  },
+  TIME: {
+    MORNING: 'Good Morning',
+    AFTERNOON: 'Good Afternoon',
+    EVENING: 'Good Evening'
   }
 };
 export default CONSTANTS;
