@@ -53,6 +53,7 @@ export default {
   .know-more-text {
     font-size: 18px;
     width: 100%;
+    padding: 20px 0;
     .click-here-text {
       text-decoration: underline;
       color: $primary-color-variant;
