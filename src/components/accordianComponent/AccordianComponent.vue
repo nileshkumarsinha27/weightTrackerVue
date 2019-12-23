@@ -128,4 +128,22 @@ export default {
     }
   }
 }
+@media screen and (max-width: 767px) {
+  .accordian-container {
+    .header-container {
+      p {
+        width: 90%;
+      }
+    }
+    .description-container {
+      .faq-table {
+        width: 90%;
+        margin: 0 auto;
+        th {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
 </style>
