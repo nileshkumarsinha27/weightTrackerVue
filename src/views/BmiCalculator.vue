@@ -47,10 +47,12 @@ export default {
   text-align: center;
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
   .know-more-text {
     font-size: 18px;
+    width: 100%;
     .click-here-text {
       text-decoration: underline;
       color: $primary-color-variant;

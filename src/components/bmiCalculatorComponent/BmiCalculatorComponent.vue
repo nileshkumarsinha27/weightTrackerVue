@@ -147,4 +147,17 @@ export default {
     }
   }
 }
+@media screen and (max-width: 767px) {
+  .bmi-calculator-component {
+    width: 75%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+  .bmi-calculator-component {
+    .common-input {
+      width: 250px;
+    }
+  }
+}
 </style>
