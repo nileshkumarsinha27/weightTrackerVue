@@ -2,7 +2,11 @@
   <div class="profile-update-container">
     <h1>{{ profileUpdateHeading }}</h1>
     <div class="left-container">
-      <form class="profile-details-form" :autocomplete="autoCompleteStatus" @submit="handleSubmit">
+      <form
+        class="profile-details-form"
+        :autocomplete="autoCompleteStatus"
+        @submit="handleSubmit"
+      >
         <InputBox
           v-for="(item, index) in profileFields"
           :typeSent="item.type"

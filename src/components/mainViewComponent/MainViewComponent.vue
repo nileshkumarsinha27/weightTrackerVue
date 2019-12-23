@@ -12,8 +12,23 @@
       :value="btnValue"
       :buttonType="btnType"
       :customClass="btnClass"
-      :handleClick="redirectionHandle"
+      :handleClick="
+        () => {
+          redirectionHandle(routes.recoredEntry);
+        }
+      "
     />
+    <p class="bmi-text">
+      {{ bmiText }}
+      <span
+        @click="
+          () => {
+            redirectionHandle(routes.bmi);
+          }
+        "
+        >{{ redirectText }}</span
+      >
+    </p>
   </div>
 </template>
 <script>
@@ -23,6 +38,8 @@ import ImageComponent from '@/components/imageComponent/ImageComponent';
 import UserNameComponent from '@/components/userNameComponent/UserNameComponent';
 import Button from '@/components/button/Button';
 import Router from '@/router.js';
+import Store from '@/store.js';
+import ACTIONS from '@/actions.constants.js';
 import { mapGetters } from 'vuex';
 export default {
   name: 'MainViewComponent',
@@ -34,12 +51,19 @@ export default {
     appImageClass: 'main-logo',
     btnValue: CONSTANTS.MAIN_VIEW_COMPONENT.BTN_VALUE,
     btnType: 'primary',
-    btnClass: 'main-view-btn'
+    btnClass: 'main-view-btn',
+    bmiText: CONSTANTS.MAIN_VIEW_COMPONENT.BMI_TEXT,
+    redirectText: 'Click here',
+    routes: {
+      recoredEntry: CONSTANTS.ROUTES.RECORD_ENTRY,
+      bmi: CONSTANTS.ROUTES.BMI_CHECK
+    }
   }),
   components: { ImageComponent, Button, UserNameComponent },
   methods: {
-    redirectionHandle: function() {
-      Router.push(CONSTANTS.ROUTES.RECORD_ENTRY);
+    redirectionHandle: function(route) {
+      Router.push(route);
+      Store.dispatch(ACTIONS.NAVBAR.SET_NAV_ROUTE, route);
     }
   },
   computed: {
@@ -50,6 +74,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import '@/styles/_variables';
 .main-content-container {
   display: flex;
   justify-content: center;
@@ -79,6 +104,19 @@ export default {
   }
   .main-descirption {
     font-size: 18px;
+  }
+  .bmi-text {
+    font-size: 16px;
+    span {
+      color: $primary-color-variant;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      &:hover {
+        color: $primary-color;
+      }
+    }
   }
 }
 </style>

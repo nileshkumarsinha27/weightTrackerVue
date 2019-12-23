@@ -14,6 +14,9 @@ const ACTIONS = {
   },
   PROFILE: {
     UPDATE_PROFILE_DATA: 'UPDATE_PROFILE_DATA'
+  },
+  BMI: {
+    SET_BMI: 'SET_BMI'
   }
 };
 export default ACTIONS;

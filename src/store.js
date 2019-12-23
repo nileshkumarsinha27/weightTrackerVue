@@ -14,7 +14,8 @@ export default new Vuex.Store({
     showBurger: false,
     isDataLoaded: false,
     userData: {},
-    navRoute: CONSTANTS.ROUTES.DEFAULT
+    navRoute: CONSTANTS.ROUTES.DEFAULT,
+    bmiValue: 0
   },
   getters: {
     weightDataGetter: state =>
@@ -35,7 +36,8 @@ export default new Vuex.Store({
     showBurger: state => state.showBurger,
     showLoader: state => state.isDataLoaded,
     selectedRoute: state => state.navRoute,
-    getUserData: state => state.userData
+    getUserData: state => state.userData,
+    getBmi: state => state.bmiValue
   },
   mutations: {
     [MUTATIONS.UPLOAD_DATA.UPLOAD_SUBMIT_MUTATION]: (state, payload) => {
@@ -63,6 +65,9 @@ export default new Vuex.Store({
         ...state.userData,
         ...payload
       };
+    },
+    [MUTATIONS.BMI.SET_BMI_MUTATION]: (state, payload) => {
+      state.bmiValue = payload;
     }
   },
   actions: {
@@ -83,6 +88,9 @@ export default new Vuex.Store({
     },
     [ACTIONS.PROFILE.UPDATE_PROFILE_DATA]: ({ commit }, payload) => {
       commit(MUTATIONS.PROFILE.UPDATE_PROFILE_DATA_MUTATION, payload);
+    },
+    [ACTIONS.BMI.SET_BMI]: ({ commit }, payload) => {
+      commit(MUTATIONS.BMI.SET_BMI_MUTATION, payload);
     }
   }
 });

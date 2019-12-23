@@ -9,6 +9,8 @@ import RecordEntry from './views/RecordEntry';
 import WeightStats from './views/WeightStats';
 import ProfileView from './views/ProfileView';
 import EmailVerify from './views/EmailVerify';
+import BmiCalculator from './views/BmiCalculator';
+import Faq from './views/Faq';
 
 Vue.use(Router);
 
@@ -52,6 +54,16 @@ const router = new Router({
           path: 'profile',
           name: 'profile',
           component: ProfileView
+        },
+        {
+          path: 'bmi-calculator',
+          name: 'bmiCalculator',
+          component: BmiCalculator
+        },
+        {
+          path: 'faq',
+          name: 'faq',
+          component: Faq
         },
         {
           path: '',
