@@ -237,7 +237,6 @@ export default {
 }
 @media screen and (max-width: 767px) {
   .login-container {
-    margin: -50px auto 0;
     .main-logo {
       height: 75px;
       width: 75px;

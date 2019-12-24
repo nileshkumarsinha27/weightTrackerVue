@@ -93,4 +93,13 @@ export default {
     }
   }
 }
+@media screen and (max-width: 767px) {
+  .bmi-data {
+    img {
+      width: 90%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
 </style>
