@@ -77,15 +77,21 @@ export default {
         );
       }
       return bmiScale.querySelector('img[alt="scale"]').clientWidth;
+    },
+    setArrowPosition: function() {
+      const { bmiScale } = this.$refs;
+      if (bmiScale) {
+        bmiScale.querySelector(
+          '.arrow-icon'
+        ).style.left = `${this.setLeftValue() - 25}px`;
+      }
     }
   },
   updated: function() {
-    const { bmiScale } = this.$refs;
-    if (bmiScale) {
-      bmiScale.querySelector(
-        '.arrow-icon'
-      ).style.left = `${this.setLeftValue() - 25}px`;
-    }
+    this.setArrowPosition();
+  },
+  mounted: function() {
+    this.setArrowPosition();
   }
 };
 </script>
