@@ -10,7 +10,10 @@
         <p>
           {{ bmiVerdict }}<span class="bold-text">{{ returnBmiResult() }}</span>
         </p>
-        <img :src="bmiScale" alt="scale" />
+        <div class="bmi-verdict" ref="bmiScale">
+          <img :src="downArr" alt="arrow" class="arrow-icon" />
+          <img :src="bmiScale" alt="scale" />
+        </div>
       </div>
       <div class="no-data" v-else>
         <p>
@@ -23,6 +26,7 @@
 <script>
 import CONSTANTS from '@/constants';
 import bmiScaleImg from '@/assets/bmiScale.png';
+import arrowDown from '@/assets/arrowDown.png';
 
 export default {
   name: 'BmiDisplayComponent',
@@ -33,7 +37,8 @@ export default {
     bmiMessage: CONSTANTS.BMI_DISPLAY.BMI_MESSAGE,
     bmiUnit: CONSTANTS.BMI_DISPLAY.BMI_UNIT,
     bmiVerdict: CONSTANTS.BMI_DISPLAY.BMI_VERDICT,
-    bmiMetricMeter: 2
+    bmiMetricMeter: 2,
+    downArr: arrowDown
   }),
   props: {
     bmi: { type: Number, default: 0 }
@@ -62,6 +67,24 @@ export default {
         return CONSTANTS.BMI_DISPLAY.BMI_RAGNGES.OBESE_CLASS_2;
       }
       return CONSTANTS.BMI_DISPLAY.BMI_RAGNGES.OBESE_CLASS_3;
+    },
+    setLeftValue: function() {
+      const { bmiScale } = this.$refs;
+      if (this.bmi < 40) {
+        return (
+          (bmiScale.querySelector('img[alt="scale"]').clientWidth / 50) *
+          this.bmi
+        );
+      }
+      return bmiScale.querySelector('img[alt="scale"]').clientWidth;
+    }
+  },
+  updated: function() {
+    const { bmiScale } = this.$refs;
+    if (bmiScale) {
+      bmiScale.querySelector(
+        '.arrow-icon'
+      ).style.left = `${this.setLeftValue() - 25}px`;
     }
   }
 };
@@ -80,7 +103,7 @@ export default {
   .bmi-data {
     p {
       font-size: 18px;
-      margin: 10px auto;
+      margin: 10px auto 20px;
       position: relative;
       sup {
         vertical-align: super;
@@ -91,11 +114,19 @@ export default {
       font-weight: bold;
       padding: 0 5px;
     }
+    .bmi-verdict {
+      position: relative;
+      .arrow-icon {
+        position: absolute;
+        left: 0;
+        top: -13px;
+      }
+    }
   }
 }
 @media screen and (max-width: 767px) {
   .bmi-data {
-    img {
+    img:not(.arrow-icon) {
       width: 90%;
       display: block;
       margin: 0 auto;
