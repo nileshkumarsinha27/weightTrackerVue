@@ -9,7 +9,8 @@ const CONSTANTS = {
   },
   NAN: NaN,
   PAGINATION_COUNT: 10,
-  TAOST_SUCCESS: 'Data Recorded successfully',
+  TAOST_SUCCESS: 'Data recorded successfully',
+  TAOST_ERROR: 'Something went wrong',
   AUTO_COMPLETE_STATUS: 'off',
   NAVBAR: {
     DATA: [

@@ -1,7 +1,7 @@
 <template>
-  <a :href="href" v-if="checkHref()" :class="getClassName('anchor-tag')">
-    {{ value }}
-  </a>
+  <a :href="href" v-if="checkHref()" :class="getClassName('anchor-tag')">{{
+    value
+  }}</a>
   <button
     :class="`button ${getClassName(buttonType)}`"
     v-else
@@ -64,6 +64,7 @@ export default {
   font-size: 14px;
   cursor: pointer;
   outline: none;
+  border: none;
   &.primary {
     background: $primary-color-variant;
     &:hover {

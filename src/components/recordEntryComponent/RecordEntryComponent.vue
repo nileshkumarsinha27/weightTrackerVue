@@ -32,6 +32,7 @@
           changeClear();
         }
       "
+      :toastType="toastType"
     />
   </div>
 </template>
@@ -42,7 +43,7 @@ import InputBox from '@/components/inputBox/InputBox';
 import Button from '@/components/button/Button';
 import DatePicker from '@/components/datePicker/DatePicker';
 import Toast from '@/components/toast/Toast';
-import { checkEmptyStr } from '@/utils';
+import { checkEmptyStr, checkNumber } from '@/utils';
 import { updateUserData, getUser } from '@/auth/Auth';
 export default {
   name: 'MainContent',
@@ -60,7 +61,8 @@ export default {
     showToast: false,
     toastMsg: '',
     isClear: false,
-    isClearPicker: false
+    isClearPicker: false,
+    toastType: ''
   }),
   components: { InputBox, Button, DatePicker, Toast },
   methods: {
@@ -103,28 +105,36 @@ export default {
     },
     formSubmithandle: function() {
       const { uid } = getUser();
-      this.isClear = true;
-      this.isClearPicker = true;
-      updateUserData(
-        uid,
-        {
-          weightData: [
-            ...this.weightData,
-            {
-              weight: this.dataObject.weight,
-              date: this.dataObject.date,
-              id: uuidv1()
-            }
-          ]
-        },
-        () => {
-          this.handleOpenCloseToast(true, CONSTANTS.TAOST_SUCCESS);
-        }
-      );
+      if (checkNumber(this.dataObject.weight)) {
+        this.isClear = true;
+        this.isClearPicker = true;
+        updateUserData(
+          uid,
+          {
+            weightData: [
+              ...this.weightData,
+              {
+                weight: this.dataObject.weight,
+                date: this.dataObject.date,
+                id: uuidv1()
+              }
+            ]
+          },
+          () => {
+            this.handleOpenCloseToast(true, CONSTANTS.TAOST_SUCCESS);
+          }
+        );
+      } else {
+        this.toastType = CONSTANTS.LOGIN.TOAST_TYPES.ERROR;
+        this.handleOpenCloseToast(true, CONSTANTS.TAOST_ERROR);
+      }
     },
     handleOpenCloseToast: function(toastStatus, text = '') {
       this.showToast = toastStatus;
       this.toastMsg = text;
+      if (text === '') {
+        this.toastType = '';
+      }
     },
     changeClear: function() {
       this.isClear = false;

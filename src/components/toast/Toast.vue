@@ -48,6 +48,9 @@ export default {
   align-items: center;
   font-weight: bold;
   animation: toastAnimation 4s ease;
+  span {
+    padding: 0 5px;
+  }
   &.error {
     background: $error-color;
   }
