@@ -14,6 +14,7 @@
           <img :src="downArr" alt="arrow" class="arrow-icon" />
           <img :src="bmiScale" alt="scale" />
         </div>
+        <p v-html="getRecommendedWeight()"></p>
       </div>
       <div class="no-data" v-else>
         <p>
@@ -27,7 +28,7 @@
 import CONSTANTS from '@/constants';
 import bmiScaleImg from '@/assets/bmiScale.png';
 import arrowDown from '@/assets/arrowDown.png';
-
+import { getAnticipatedWeight } from '@/utils';
 export default {
   name: 'BmiDisplayComponent',
   data: () => ({
@@ -41,7 +42,15 @@ export default {
     downArr: arrowDown
   }),
   props: {
-    bmi: { type: Number, default: 0 }
+    bmi: { type: Number, default: 0 },
+    height: {
+      type: Number,
+      default: 0
+    },
+    weight: {
+      type: Number,
+      default: 0
+    }
   },
   methods: {
     checkBmiRender: function() {
@@ -72,7 +81,7 @@ export default {
       const { bmiScale } = this.$refs;
       if (this.bmi < 40) {
         return (
-          (bmiScale.querySelector('img[alt="scale"]').clientWidth / 50) *
+          (bmiScale.querySelector('img[alt="scale"]').clientWidth / 35) *
           this.bmi
         );
       }
@@ -85,6 +94,22 @@ export default {
           '.arrow-icon'
         ).style.left = `${this.setLeftValue() - 25}px`;
       }
+    },
+    getRecommendedWeight: function() {
+      if (this.bmi < 18.5 || this.bmi >= 25) {
+        return `You need to ${this.getWordVerdict()} to have proper BMI of<span class="bold-text">18.5</span>kg/m<sup>2</sup>`;
+      }
+      return '';
+    },
+    getWordVerdict: function() {
+      if (this.bmi > 25) {
+        return `reduce<span class="bold-text">${this.weight -
+          getAnticipatedWeight(18.5, this.height)}</span>kg(s)`;
+      }
+      return `increase<span class="bold-text">${getAnticipatedWeight(
+        18.5,
+        this.height
+      ) - this.weight}</span>kg(s)`;
     }
   },
   updated: function() {
@@ -95,7 +120,7 @@ export default {
   }
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/styles/_variables';
 .bmi-calculator-component {
   .bmi-display-heading {

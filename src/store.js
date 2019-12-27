@@ -15,7 +15,9 @@ export default new Vuex.Store({
     isDataLoaded: false,
     userData: {},
     navRoute: CONSTANTS.ROUTES.DEFAULT,
-    bmiValue: 0
+    bmiValue: 0,
+    heightEntered: 0,
+    weightEntered: 0
   },
   getters: {
     weightDataGetter: state =>
@@ -37,7 +39,9 @@ export default new Vuex.Store({
     showLoader: state => state.isDataLoaded,
     selectedRoute: state => state.navRoute,
     getUserData: state => state.userData,
-    getBmi: state => state.bmiValue
+    getBmi: state => state.bmiValue,
+    getHeight: state => state.heightEntered,
+    getWeight: state => state.weightEntered
   },
   mutations: {
     [MUTATIONS.UPLOAD_DATA.UPLOAD_SUBMIT_MUTATION]: (state, payload) => {
@@ -67,7 +71,9 @@ export default new Vuex.Store({
       };
     },
     [MUTATIONS.BMI.SET_BMI_MUTATION]: (state, payload) => {
-      state.bmiValue = payload;
+      state.bmiValue = payload.bmi;
+      state.heightEntered = payload.height;
+      state.weightEntered = payload.weight;
     }
   },
   actions: {

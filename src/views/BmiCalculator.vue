@@ -1,7 +1,11 @@
 <template>
   <div class="bmi-calculator-container">
     <BmiCalculatorComponent />
-    <BmiDisplayComponent :bmi="bmi" />
+    <BmiDisplayComponent
+      :bmi="bmi"
+      :height="heightEntered"
+      :weight="weightEntered"
+    />
     <p class="know-more-text">
       {{ knowMoreText }}
       <span class="click-here-text" @click="faqClick">{{ clickHereText }}</span>
@@ -21,7 +25,9 @@ export default {
   components: { BmiCalculatorComponent, BmiDisplayComponent },
   computed: {
     ...mapGetters({
-      bmi: 'getBmi'
+      bmi: 'getBmi',
+      heightEntered: 'getHeight',
+      weightEntered: 'getWeight'
     })
   },
   data: () => ({

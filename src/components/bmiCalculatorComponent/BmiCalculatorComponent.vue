@@ -90,7 +90,9 @@ export default {
       const { height, weight } = this.formDataStored;
       if (checkNumber(Number(height)) && checkNumber(Number(weight))) {
         this.bmi = calculateBmi(height, weight);
-        Store.dispatch(ACTIONS.BMI.SET_BMI, Number(this.bmi));
+        Store.dispatch(ACTIONS.BMI.SET_BMI, {
+          ...{ bmi: Number(this.bmi), height, weight }
+        });
         this.isClear = true;
       } else {
         this.showHideToast(
