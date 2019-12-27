@@ -81,7 +81,7 @@ export default {
       const { bmiScale } = this.$refs;
       if (this.bmi < 40) {
         return (
-          (bmiScale.querySelector('img[alt="scale"]').clientWidth / 35) *
+          (bmiScale.querySelector('img[alt="scale"]').clientWidth / 50) *
           this.bmi
         );
       }

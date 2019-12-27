@@ -1,6 +1,6 @@
 {
   "name": "weight-tracker",
-  "version": "1.0.1",
+  "version": "1.1.2",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -12,6 +12,8 @@
     "chart.js": "^2.9.3",
     "classnames": "^2.2.6",
     "core-js": "^2.6.5",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^1.7.0",
     "firebase": "^7.6.0",
     "moment": "^2.24.0",
     "register-service-worker": "^1.6.2",
